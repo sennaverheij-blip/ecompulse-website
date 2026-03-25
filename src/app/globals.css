@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #0a0a0a;
+  --color-surface: #141414;
+  --color-border: #2a2a2a;
+  --color-text: #ffffff;
+  --color-text-secondary: #999999;
+  --color-accent: #e8763a;
+  --color-accent-hover: #f08a4e;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
+
+/* Grid background pattern */
+.grid-bg {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Card gradients */
+.card-pulse {
+  background: linear-gradient(180deg, #1a1a1a 0%, #141414 100%);
+  border: 1px solid #2a2a2a;
+}
+
+.card-pulse-plus {
+  background: linear-gradient(180deg, #3d2a1a 0%, #2a1d12 50%, #1a1410 100%);
+  border: 1px solid #4a3020;
+}
+
+.card-pulse-x {
+  background: linear-gradient(180deg, #4a3520 0%, #3a2815 50%, #2a1d10 100%);
+  border: 1px solid #5a4030;
+}
+
+/* CTA banner */
+.cta-banner {
+  background: linear-gradient(135deg, #1a0f08 0%, #2a1510 30%, #1a0f08 60%, #0a0a0a 100%);
+  border: 1px solid rgba(232, 118, 58, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-banner::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(232, 118, 58, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+/* Dots decoration */
+.dots-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* FAQ styles */
+.faq-item-open {
+  background: linear-gradient(135deg, #2a1d12 0%, #1a1410 100%);
+  border: 1px solid #3a2a1a;
+}
+
+.faq-item-closed {
+  background: #141414;
+  border: 1px solid #2a2a2a;
+}
+
+/* Floating particles */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); opacity: 0.3; }
+  50% { transform: translateY(-15px); opacity: 0.6; }
+}
+
+.particle {
+  animation: float 6s ease-in-out infinite;
+}
+
+.particle-delay-1 { animation-delay: 1s; }
+.particle-delay-2 { animation-delay: 2s; }
+.particle-delay-3 { animation-delay: 3s; }
+.particle-delay-4 { animation-delay: 4s; }
