@@ -1,97 +1,83 @@
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
-import PricingCard from "@/components/PricingCard";
+import DashboardMockup from "@/components/DashboardMockup";
+import TrustBadge from "@/components/TrustBadge";
+import FeatureGrid from "@/components/FeatureGrid";
+import BenefitsRow from "@/components/BenefitsRow";
+import PricingPreview from "@/components/PricingPreview";
+import TestimonialGrid from "@/components/TestimonialGrid";
 import FAQ from "@/components/FAQ";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 
-const pricingPlans = [
-  {
-    name: "Pulse",
-    price: "400",
-    flowCount: "3",
-    emailCount: "7",
-    variant: "default" as const,
-    features: [
-      { text: "Welcome series" },
-      { text: "Abandoned checkout" },
-      { text: "Browse abandoned" },
-      { text: "Live in 5-7 days" },
-    ],
-  },
-  {
-    name: "Pulse+",
-    price: "650",
-    flowCount: "5",
-    emailCount: "13",
-    variant: "plus" as const,
-    features: [
-      { text: "All Pulse features" },
-      { text: "Customer win-back" },
-      { text: "Post purchase upsell" },
-      { text: "Increase of LTV & Repeat purchases" },
-    ],
-  },
-  {
-    name: "PulseX",
-    price: "880",
-    flowCount: "10",
-    emailCount: "25",
-    variant: "x" as const,
-    features: [
-      { text: "All Pulse+ features" },
-      { text: "Site abandoned" },
-      { text: "Flash sale sequence" },
-      { text: "Tracking panel (Rush/Parcel/other)" },
-    ],
-  },
-];
-
 export default function Home() {
   return (
     <div className="relative min-h-screen">
-      {/* Grid background */}
-      <div className="fixed inset-0 grid-bg pointer-events-none" />
-
-      {/* Ambient glow */}
-      <div className="fixed top-0 right-0 w-[600px] h-[600px] pointer-events-none">
-        <div className="w-full h-full bg-[radial-gradient(ellipse_at_top_right,rgba(232,118,58,0.08)_0%,transparent_50%)]" />
+      {/* Background effects */}
+      <div className="fixed inset-0 pointer-events-none">
+        <div className="flame-bg absolute inset-0" />
       </div>
 
       <Navbar />
 
       <main className="relative z-10">
-        {/* Hero / Pricing Section */}
-        <section id="pricing" className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight max-w-2xl">
-            Flexible Pricing for Every Business
-          </h1>
-          <p className="mt-6 text-base sm:text-lg text-[#999] max-w-xl">
-            Choose a plan that fits your needs and start leveraging AI-powered
-            insights today.
-          </p>
-
-          {/* Toggle */}
-          <div className="mt-12 flex justify-center">
-            <div className="inline-flex items-center border border-[#2a2a2a] rounded-full px-5 py-2 text-sm text-white">
-              One-Time
+        {/* ─── Hero ─── */}
+        <section className="pt-28 sm:pt-36 pb-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+            {/* Text */}
+            <div>
+              <h1 className="text-4xl sm:text-5xl lg:text-[56px] font-bold leading-[1.1] tracking-tight">
+                Boost eCommerce Revenue with Email Flows
+              </h1>
+              <p className="mt-6 text-base sm:text-lg text-[#888] max-w-lg leading-relaxed">
+                Ecom store. Now automate email flows, catch up sales and increase
+                customer lifetime value by 20–25%.
+              </p>
+              <div className="mt-8 flex flex-col sm:flex-row items-start gap-4">
+                <Link
+                  href="/pricing"
+                  className="inline-flex items-center gap-2 bg-[#c4622d] text-white text-sm font-medium px-6 py-3 rounded-lg hover:bg-[#d4743f] transition-all duration-200 hover:-translate-y-0.5"
+                >
+                  Check The Packages
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </Link>
+              </div>
+              <div className="mt-8">
+                <TrustBadge />
+              </div>
             </div>
-          </div>
 
-          {/* Pricing Cards */}
-          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {pricingPlans.map((plan) => (
-              <PricingCard key={plan.name} {...plan} />
-            ))}
+            {/* Dashboard visual */}
+            <div className="relative flex justify-center lg:justify-end">
+              <div className="relative">
+                <div className="absolute -inset-12 glow-hero pointer-events-none" />
+                <DashboardMockup />
+              </div>
+            </div>
           </div>
         </section>
 
-        {/* FAQ Section */}
+        {/* ─── Feature Grid ─── */}
+        <FeatureGrid />
+
+        {/* ─── Benefits Row ─── */}
+        <BenefitsRow />
+
+        {/* ─── Pricing Preview ─── */}
+        <PricingPreview />
+
+        {/* ─── Testimonials ─── */}
+        <TestimonialGrid />
+
+        {/* ─── FAQ ─── */}
         <FAQ />
 
-        {/* CTA Banner */}
-        <CTABanner />
+        {/* ─── CTA Banner ─── */}
+        <CTABanner ctaLabel="Get Started" ctaHref="/pricing" />
 
-        {/* Footer */}
+        {/* ─── Footer ─── */}
         <Footer />
       </main>
     </div>

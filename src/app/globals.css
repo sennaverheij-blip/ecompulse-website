@@ -2,12 +2,20 @@
 
 @theme inline {
   --color-bg: #0a0a0a;
-  --color-surface: #141414;
-  --color-border: #2a2a2a;
+  --color-surface: #111111;
+  --color-surface-light: #161616;
+  --color-border: #222222;
+  --color-border-light: #2a2a2a;
+  --color-accent: #c4622d;
+  --color-accent-light: #d4743f;
+  --color-accent-hover: #e07f4a;
   --color-text: #ffffff;
-  --color-text-secondary: #999999;
-  --color-accent: #e8763a;
-  --color-accent-hover: #f08a4e;
+  --color-text-muted: #888888;
+  --color-text-dim: #999999;
+  --color-highlight-bg: #2a1a0e;
+  --color-highlight-border: #5a2e10;
+  --color-pill-bg: #1e1e1e;
+  --color-pill-border: #333333;
 }
 
 html {
@@ -19,34 +27,93 @@ body {
   color: var(--color-text);
 }
 
-/* Grid background pattern */
+/* ─── Grid overlay (pricing page) ─── */
 .grid-bg {
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: 64px 64px;
 }
 
-/* Card gradients */
+/* ─── Ambient glows ─── */
+.glow-hero {
+  background: radial-gradient(
+    ellipse 60% 50% at 65% 40%,
+    rgba(180, 80, 20, 0.35) 0%,
+    rgba(180, 80, 20, 0.08) 40%,
+    transparent 70%
+  );
+}
+
+.glow-top-right {
+  background: radial-gradient(
+    ellipse at top right,
+    rgba(196, 98, 45, 0.12) 0%,
+    transparent 50%
+  );
+}
+
+.glow-orange-subtle {
+  background: radial-gradient(
+    ellipse at center,
+    rgba(196, 98, 45, 0.08) 0%,
+    transparent 60%
+  );
+}
+
+/* ─── Card variants ─── */
+.card-dark {
+  background: #111111;
+  border: 1px solid #222222;
+  border-radius: 14px;
+}
+
+.card-highlight {
+  background: radial-gradient(
+    ellipse at 50% 100%,
+    rgba(196, 98, 45, 0.15) 0%,
+    #1e120a 40%,
+    #161616 100%
+  );
+  border: 1px solid #5a2e10;
+  border-radius: 14px;
+}
+
+.card-benefit {
+  background: linear-gradient(180deg, #111111 40%, rgba(196, 98, 45, 0.08) 100%);
+  border: 1px solid #222222;
+  border-radius: 14px;
+}
+
+/* Pricing cards */
 .card-pulse {
-  background: linear-gradient(180deg, #1a1a1a 0%, #141414 100%);
-  border: 1px solid #2a2a2a;
+  background: #111111;
+  border: 1px solid #222222;
+  border-radius: 14px;
 }
 
 .card-pulse-plus {
-  background: linear-gradient(180deg, #3d2a1a 0%, #2a1d12 50%, #1a1410 100%);
-  border: 1px solid #4a3020;
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(196, 98, 45, 0.2) 0%,
+    #1e120a 50%,
+    #111111 100%
+  );
+  border: 1px solid #5a2e10;
+  border-radius: 14px;
 }
 
 .card-pulse-x {
-  background: linear-gradient(180deg, #4a3520 0%, #3a2815 50%, #2a1d10 100%);
-  border: 1px solid #5a4030;
+  background: linear-gradient(180deg, #1a1208 0%, #111111 100%);
+  border: 1px solid #3a2510;
+  border-radius: 14px;
 }
 
-/* CTA banner */
+/* ─── CTA banner ─── */
 .cta-banner {
-  background: linear-gradient(135deg, #1a0f08 0%, #2a1510 30%, #1a0f08 60%, #0a0a0a 100%);
-  border: 1px solid rgba(232, 118, 58, 0.3);
+  background: #111111;
+  border: 1px solid #222222;
+  border-radius: 16px;
   position: relative;
   overflow: hidden;
 }
@@ -54,42 +121,141 @@ body {
 .cta-banner::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(ellipse at 30% 50%, rgba(232, 118, 58, 0.1) 0%, transparent 50%);
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(196, 98, 45, 0.06) 0%, transparent 60%);
   pointer-events: none;
 }
 
-/* Dots decoration */
+/* ─── Dots / particles decoration ─── */
 .dots-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px);
-  background-size: 20px 20px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 24px 24px;
 }
 
-/* FAQ styles */
+/* ─── FAQ ─── */
 .faq-item-open {
-  background: linear-gradient(135deg, #2a1d12 0%, #1a1410 100%);
+  background: linear-gradient(135deg, #2a1a0e 0%, #1a1410 100%);
   border: 1px solid #3a2a1a;
+  border-radius: 12px;
 }
 
 .faq-item-closed {
-  background: #141414;
-  border: 1px solid #2a2a2a;
+  background: #111111;
+  border: 1px solid #222222;
+  border-radius: 12px;
+  transition: border-color 0.2s ease;
 }
 
-/* Floating particles */
+.faq-item-closed:hover {
+  border-color: #333333;
+}
+
+/* ─── Buttons ─── */
+.btn-accent {
+  background: var(--color-accent);
+  color: #fff;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-accent:hover {
+  background: var(--color-accent-hover);
+  transform: translateY(-1px);
+}
+
+.btn-outline-accent {
+  background: transparent;
+  color: var(--color-accent);
+  border: 1px solid var(--color-accent);
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.btn-outline-accent:hover {
+  background: rgba(196, 98, 45, 0.1);
+}
+
+/* ─── Pills / Tags ─── */
+.pill {
+  background: #1e1e1e;
+  border: 1px solid #333333;
+  border-radius: 999px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: #ccc;
+}
+
+/* ─── Dashboard mockup card ─── */
+.dashboard-card {
+  background: #0d0d0d;
+  border: 1px solid #1a1a1a;
+  border-radius: 14px;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.03),
+    0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+/* ─── Animations ─── */
 @keyframes float {
   0%, 100% { transform: translateY(0px); opacity: 0.3; }
-  50% { transform: translateY(-15px); opacity: 0.6; }
+  50% { transform: translateY(-12px); opacity: 0.6; }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
 }
 
 .particle {
   animation: float 6s ease-in-out infinite;
 }
-
 .particle-delay-1 { animation-delay: 1s; }
 .particle-delay-2 { animation-delay: 2s; }
 .particle-delay-3 { animation-delay: 3s; }
 .particle-delay-4 { animation-delay: 4s; }
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out both;
+}
+
+/* ─── Pricing card hover ─── */
+.pricing-card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pricing-card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* ─── Testimonial stars ─── */
+.star-orange {
+  color: #c4622d;
+}
+
+/* ─── Trustpilot stars ─── */
+.star-green {
+  color: #00b67a;
+}
+
+/* ─── Flame background (home hero) ─── */
+.flame-bg {
+  background:
+    radial-gradient(ellipse 40% 60% at 75% 60%, rgba(200, 90, 20, 0.3) 0%, transparent 60%),
+    radial-gradient(ellipse 30% 40% at 70% 50%, rgba(230, 120, 30, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 20% 30% at 80% 55%, rgba(255, 150, 50, 0.1) 0%, transparent 40%);
+}
