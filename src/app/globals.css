@@ -1,21 +1,28 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-bg: #0a0a0a;
+  /* ─── Colors ─── */
+  --color-orange: #c4622d;
+  --color-orange-hover: #a85326;
+  --color-bg-dark: #0d0d0d;
+  --color-bg-light: #ffffff;
   --color-surface: #111111;
-  --color-surface-light: #161616;
   --color-border: #222222;
-  --color-border-light: #2a2a2a;
-  --color-accent: #c4622d;
-  --color-accent-light: #d4743f;
-  --color-accent-hover: #e07f4a;
-  --color-text: #ffffff;
-  --color-text-muted: #888888;
-  --color-text-dim: #999999;
-  --color-highlight-bg: #2a1a0e;
-  --color-highlight-border: #5a2e10;
-  --color-pill-bg: #1e1e1e;
-  --color-pill-border: #333333;
+  --color-text-primary: #f5f5f5;
+  --color-text-secondary: #6b6b6b;
+
+  /* ─── Typography ─── */
+  --text-display: clamp(48px, 6vw, 80px);
+  --text-h1: clamp(32px, 4vw, 52px);
+  --text-h2: 32px;
+  --text-h3: 20px;
+  --text-body: 16px;
+  --text-small: 14px;
+  --text-xs: 12px;
+
+  /* ─── Fonts ─── */
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
 }
 
 html {
@@ -23,239 +30,159 @@ html {
 }
 
 body {
-  background-color: var(--color-bg);
-  color: var(--color-text);
+  background-color: var(--color-bg-dark);
+  color: var(--color-text-primary);
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
-/* ─── Grid overlay (pricing page) ─── */
-.grid-bg {
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
-  background-size: 64px 64px;
+/* ─── Font utility ─── */
+.font-display {
+  font-family: var(--font-display), system-ui, sans-serif;
 }
 
-/* ─── Ambient glows ─── */
-.glow-hero {
-  background: radial-gradient(
-    ellipse 60% 50% at 65% 40%,
-    rgba(180, 80, 20, 0.35) 0%,
-    rgba(180, 80, 20, 0.08) 40%,
-    transparent 70%
-  );
+.font-body {
+  font-family: var(--font-body), system-ui, sans-serif;
 }
 
-.glow-top-right {
-  background: radial-gradient(
-    ellipse at top right,
-    rgba(196, 98, 45, 0.12) 0%,
-    transparent 50%
-  );
+/* ─── Scroll-triggered fade-up ─── */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
 }
 
-.glow-orange-subtle {
-  background: radial-gradient(
-    ellipse at center,
-    rgba(196, 98, 45, 0.08) 0%,
-    transparent 60%
-  );
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* ─── Card variants ─── */
-.card-dark {
-  background: #111111;
-  border: 1px solid #222222;
-  border-radius: 14px;
-}
-
-.card-highlight {
-  background: radial-gradient(
-    ellipse at 50% 100%,
-    rgba(196, 98, 45, 0.15) 0%,
-    #1e120a 40%,
-    #161616 100%
-  );
-  border: 1px solid #5a2e10;
-  border-radius: 14px;
-}
-
-.card-benefit {
-  background: linear-gradient(180deg, #111111 40%, rgba(196, 98, 45, 0.08) 100%);
-  border: 1px solid #222222;
-  border-radius: 14px;
-}
-
-/* Pricing cards */
-.card-pulse {
-  background: #111111;
-  border: 1px solid #222222;
-  border-radius: 14px;
-}
-
-.card-pulse-plus {
-  background: radial-gradient(
-    ellipse at 50% 80%,
-    rgba(196, 98, 45, 0.2) 0%,
-    #1e120a 50%,
-    #111111 100%
-  );
-  border: 1px solid #5a2e10;
-  border-radius: 14px;
-}
-
-.card-pulse-x {
-  background: linear-gradient(180deg, #1a1208 0%, #111111 100%);
-  border: 1px solid #3a2510;
-  border-radius: 14px;
-}
-
-/* ─── CTA banner ─── */
-.cta-banner {
-  background: #111111;
-  border: 1px solid #222222;
-  border-radius: 16px;
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-banner::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at 20% 50%, rgba(196, 98, 45, 0.06) 0%, transparent 60%);
-  pointer-events: none;
-}
-
-/* ─── Dots / particles decoration ─── */
-.dots-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px);
-  background-size: 24px 24px;
-}
-
-/* ─── FAQ ─── */
-.faq-item-open {
-  background: linear-gradient(135deg, #2a1a0e 0%, #1a1410 100%);
-  border: 1px solid #3a2a1a;
-  border-radius: 12px;
-}
-
-.faq-item-closed {
-  background: #111111;
-  border: 1px solid #222222;
-  border-radius: 12px;
-  transition: border-color 0.2s ease;
-}
-
-.faq-item-closed:hover {
-  border-color: #333333;
-}
+/* Stagger delays for sibling elements */
+.fade-up-delay-1 { transition-delay: 0.1s; }
+.fade-up-delay-2 { transition-delay: 0.2s; }
+.fade-up-delay-3 { transition-delay: 0.3s; }
 
 /* ─── Buttons ─── */
-.btn-accent {
-  background: var(--color-accent);
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--color-orange);
   color: #fff;
-  border-radius: 8px;
-  padding: 12px 24px;
+  border-radius: 100px;
+  padding: 14px 28px;
   font-weight: 500;
   font-size: 14px;
-  transition: all 0.2s ease;
+  transition: transform 0.15s ease, opacity 0.15s ease;
   cursor: pointer;
   border: none;
 }
 
-.btn-accent:hover {
-  background: var(--color-accent-hover);
+.btn-primary:hover {
+  opacity: 0.9;
   transform: translateY(-1px);
 }
 
-.btn-outline-accent {
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   background: transparent;
-  color: var(--color-accent);
-  border: 1px solid var(--color-accent);
-  border-radius: 8px;
-  padding: 12px 24px;
+  color: currentColor;
+  border: 1.5px solid currentColor;
+  border-radius: 100px;
+  padding: 14px 28px;
   font-weight: 500;
   font-size: 14px;
-  transition: all 0.2s ease;
+  transition: background 0.15s ease, transform 0.15s ease;
   cursor: pointer;
 }
 
-.btn-outline-accent:hover {
-  background: rgba(196, 98, 45, 0.1);
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.06);
+  transform: translateY(-1px);
 }
 
-/* ─── Pills / Tags ─── */
-.pill {
-  background: #1e1e1e;
-  border: 1px solid #333333;
-  border-radius: 999px;
-  padding: 4px 12px;
-  font-size: 12px;
-  color: #ccc;
+/* ─── Subtle grid/dot pattern ─── */
+.dot-pattern {
+  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
 }
 
-/* ─── Dashboard mockup card ─── */
-.dashboard-card {
-  background: #0d0d0d;
-  border: 1px solid #1a1a1a;
-  border-radius: 14px;
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.03),
-    0 20px 60px rgba(0, 0, 0, 0.5);
+/* ─── Marquee (logo strip) ─── */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* ─── Animations ─── */
-@keyframes float {
-  0%, 100% { transform: translateY(0px); opacity: 0.3; }
-  50% { transform: translateY(-12px); opacity: 0.6; }
+.marquee-track {
+  animation: marquee 30s linear infinite;
 }
 
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to { opacity: 1; transform: translateY(0); }
+.marquee-track:hover {
+  animation-play-state: paused;
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+/* ─── Stat card ─── */
+.stat-number {
+  font-size: clamp(36px, 5vw, 56px);
+  font-weight: 700;
+  color: var(--color-orange);
+  line-height: 1;
 }
 
-.particle {
-  animation: float 6s ease-in-out infinite;
-}
-.particle-delay-1 { animation-delay: 1s; }
-.particle-delay-2 { animation-delay: 2s; }
-.particle-delay-3 { animation-delay: 3s; }
-.particle-delay-4 { animation-delay: 4s; }
-
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out both;
+/* ─── FAQ clean ─── */
+.faq-item {
+  border-bottom: 1px solid #222;
+  transition: all 0.2s ease;
 }
 
-/* ─── Pricing card hover ─── */
-.pricing-card-hover {
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.faq-item-active {
+  border-left: 3px solid var(--color-orange);
+  padding-left: 20px;
 }
 
-.pricing-card-hover:hover {
+/* ─── Feature visual cards ─── */
+.feature-visual {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 12px;
+  padding: 24px;
+}
+
+/* ─── Pricing card ─── */
+.pricing-card {
+  background: #111;
+  border: 1px solid #222;
+  border-radius: 16px;
+  transition: transform 0.2s ease;
+}
+
+.pricing-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* ─── Testimonial stars ─── */
-.star-orange {
-  color: #c4622d;
+.pricing-card-featured {
+  background: #111;
+  border: 2px solid var(--color-orange);
+  border-radius: 16px;
+  transition: transform 0.2s ease;
 }
 
-/* ─── Trustpilot stars ─── */
-.star-green {
-  color: #00b67a;
+.pricing-card-featured:hover {
+  transform: translateY(-4px);
 }
 
-/* ─── Flame background (home hero) ─── */
-.flame-bg {
-  background:
-    radial-gradient(ellipse 40% 60% at 75% 60%, rgba(200, 90, 20, 0.3) 0%, transparent 60%),
-    radial-gradient(ellipse 30% 40% at 70% 50%, rgba(230, 120, 30, 0.15) 0%, transparent 50%),
-    radial-gradient(ellipse 20% 30% at 80% 55%, rgba(255, 150, 50, 0.1) 0%, transparent 40%);
+/* ─── Result card (data readout) ─── */
+.result-card {
+  background: #111;
+  border: 1px solid #222;
+  border-left: 3px solid var(--color-orange);
+  border-radius: 8px;
+  padding: 20px 24px;
+}
+
+/* ─── Testimonial ─── */
+.testimonial-hero {
+  border-left: 3px solid var(--color-orange);
+  padding-left: 24px;
 }

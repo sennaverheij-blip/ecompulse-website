@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Space_Grotesk, DM_Sans } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-display",
+  weight: ["400", "500", "600", "700"],
+});
+
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "500", "600"],
 });
 
 export const metadata: Metadata = {
-  title: "EcomPulse - AI-Powered Email Flows for Ecommerce",
+  title: "EcomPulse — Done-for-You Klaviyo Email Flows",
   description:
-    "Flexible pricing for every business. Choose a plan that fits your needs and start leveraging AI-powered insights today.",
+    "Stop leaving 20-30% of your revenue on the table. Done-for-you Klaviyo email flows, live in 5-7 days.",
 };
 
 export default function RootLayout({
@@ -19,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} antialiased`}>
-      <body className="min-h-screen">{children}</body>
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
+      <body className="min-h-screen font-body">{children}</body>
     </html>
   );
 }
