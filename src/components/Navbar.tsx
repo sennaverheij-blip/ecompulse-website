@@ -8,8 +8,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Features", href: "/features" },
   { label: "Pricing", href: "/pricing" },
-  { label: "Campaigns", href: "#campaigns" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -20,9 +19,8 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-md border-b border-white/5">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          {/* Logo */}
           <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#d4743f] to-[#c4622d] flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-[#c4622d] flex items-center justify-center">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
               </svg>
@@ -30,7 +28,6 @@ export default function Navbar() {
             <span className="text-white font-semibold text-[15px]">EcomPulse</span>
           </Link>
 
-          {/* Desktop links */}
           <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <Link
@@ -45,7 +42,6 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Desktop CTA */}
           <Link
             href="/pricing"
             className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-[#c4622d] border border-[#c4622d] rounded-lg px-5 py-2 hover:bg-[#c4622d] hover:text-white transition-all duration-200"
@@ -56,7 +52,6 @@ export default function Navbar() {
             </svg>
           </Link>
 
-          {/* Mobile toggle */}
           <button
             className="md:hidden text-white p-2"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -75,7 +70,6 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/5">
           <div className="px-4 py-4 flex flex-col gap-4">

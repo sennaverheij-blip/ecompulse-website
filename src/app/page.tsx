@@ -8,6 +8,7 @@ import PricingPreview from "@/components/PricingPreview";
 import TestimonialGrid from "@/components/TestimonialGrid";
 import FAQ from "@/components/FAQ";
 import CTABanner from "@/components/CTABanner";
+import ContactSection from "@/components/ContactSection";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -73,6 +74,9 @@ export default function Home() {
 
         {/* ─── FAQ ─── */}
         <FAQ />
+
+        {/* ─── Contact ─── */}
+        <ContactSection />
 
         {/* ─── CTA Banner ─── */}
         <CTABanner ctaLabel="Get Started" ctaHref="/pricing" />

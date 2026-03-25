@@ -88,7 +88,7 @@ export default function PricingPage() {
         <FAQ />
 
         {/* ─── CTA Banner ─── */}
-        <CTABanner ctaLabel="Start free trial" ctaHref="#" />
+        <CTABanner ctaLabel="Get Started" ctaHref="/pricing" />
 
         {/* ─── Footer ─── */}
         <Footer />
