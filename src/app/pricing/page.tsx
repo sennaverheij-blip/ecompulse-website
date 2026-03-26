@@ -11,6 +11,7 @@ const pricingPlans = [
     flowCount: "3",
     emailCount: "7",
     variant: "default" as const,
+    audience: "Perfect for stores just getting started with email",
     features: [
       { text: "Welcome series" },
       { text: "Abandoned checkout" },
@@ -24,6 +25,7 @@ const pricingPlans = [
     flowCount: "5",
     emailCount: "13",
     variant: "plus" as const,
+    audience: "Best for growing stores ready to scale LTV",
     features: [
       { text: "All Pulse features" },
       { text: "Customer win-back" },
@@ -37,6 +39,7 @@ const pricingPlans = [
     flowCount: "10",
     emailCount: "25",
     variant: "x" as const,
+    audience: "For 6-figure+ stores maximizing every dollar",
     features: [
       { text: "All Pulse+ features" },
       { text: "Site abandoned" },
@@ -88,7 +91,7 @@ export default function PricingPage() {
         <FAQ />
 
         {/* ─── CTA Banner ─── */}
-        <CTABanner ctaLabel="Get Started" ctaHref="/pricing" />
+        <CTABanner primaryLabel="Get Started" primaryHref="/pricing" />
 
         {/* ─── Footer ─── */}
         <Footer />

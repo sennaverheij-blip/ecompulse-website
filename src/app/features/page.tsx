@@ -80,7 +80,7 @@ export default function FeaturesPage() {
         />
 
         {/* ─── CTA Banner ─── */}
-        <CTABanner ctaLabel="Get Started" ctaHref="/pricing" />
+        <CTABanner primaryLabel="Get Started" primaryHref="/pricing" />
 
         {/* ─── Footer ─── */}
         <Footer />
