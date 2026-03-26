@@ -25,6 +25,11 @@ const faqs = [
       "Our Pulse plan goes live in 5-7 business days. Pulse+ and PulseX plans may take slightly longer due to the additional flows and customization involved. You'll typically see measurable results within the first 2 weeks of your flows going live.",
   },
   {
+    question: "What if I'm not happy with the results?",
+    answer:
+      "We offer a results-backed guarantee. If you're not satisfied with the quality of the flows, we'll revise them until you are. Our goal is to make this the highest-ROI investment you make for your store this year.",
+  },
+  {
     question: "How does the onboarding process work?",
     answer:
       "After purchase, you'll receive a detailed onboarding questionnaire. Our team reviews your store, brand voice, and goals. We then build your flows, send them for approval, and launch once you're happy. The entire process is hands-off for you.",
@@ -35,35 +40,33 @@ export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number>(0);
 
   return (
-    <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
+    <section className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 max-w-3xl mx-auto">
       <ScrollReveal>
         <h2 className="font-display text-[var(--text-h1)] font-bold text-center">
           Everything You Need to Know
         </h2>
-        <p className="mt-4 text-center text-[#6b6b6b] text-base">
-          Find answers to common questions about EcomPulse.
+        <p className="mt-3 sm:mt-4 text-center text-[#6b6b6b] text-[15px] sm:text-base">
+          Common questions about EcomPulse.
         </p>
       </ScrollReveal>
 
-      <div className="mt-12 flex flex-col">
+      <div className="mt-8 sm:mt-12 flex flex-col">
         {faqs.map((faq, i) => {
           const isOpen = openIndex === i;
           return (
-            <ScrollReveal key={i} delay={i * 0.05}>
+            <ScrollReveal key={i} delay={i * 0.04}>
               <button
-                className={`w-full text-left py-5 transition-all duration-200 cursor-pointer faq-item ${
+                className={`w-full text-left py-4 sm:py-5 transition-all duration-200 cursor-pointer faq-item ${
                   isOpen ? "faq-item-active" : ""
                 }`}
                 onClick={() => setOpenIndex(isOpen ? -1 : i)}
               >
-                <div className="flex items-center justify-between gap-4">
-                  <span className={`text-sm font-medium ${isOpen ? "text-[#c4622d]" : "text-white"}`}>
+                <div className="flex items-center justify-between gap-3 sm:gap-4">
+                  <span className={`text-[13px] sm:text-sm font-medium ${isOpen ? "text-[#c4622d]" : "text-white"}`}>
                     {faq.question}
                   </span>
                   <svg
-                    className={`shrink-0 transition-transform duration-200 text-[#6b6b6b] ${
-                      isOpen ? "rotate-180" : ""
-                    }`}
+                    className={`shrink-0 transition-transform duration-200 text-[#6b6b6b] ${isOpen ? "rotate-180" : ""}`}
                     width="16"
                     height="16"
                     viewBox="0 0 24 24"
@@ -74,12 +77,8 @@ export default function FAQ() {
                     <path d="M6 9l6 6 6-6" />
                   </svg>
                 </div>
-                <div
-                  className={`overflow-hidden transition-all duration-300 ${
-                    isOpen ? "max-h-48 mt-3 opacity-100" : "max-h-0 opacity-0"
-                  }`}
-                >
-                  <p className="text-sm text-[#6b6b6b] leading-relaxed">{faq.answer}</p>
+                <div className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-60 mt-3 opacity-100" : "max-h-0 opacity-0"}`}>
+                  <p className="text-[13px] sm:text-sm text-[#6b6b6b] leading-relaxed">{faq.answer}</p>
                 </div>
               </button>
             </ScrollReveal>

@@ -10,6 +10,7 @@ const plans = [
     emailCount: "7",
     variant: "default" as const,
     audience: "Perfect for stores just getting started with email",
+    stripeUrl: "https://buy.stripe.com/3cIcMZ5o0cLvdxq0Q7fnO00",
     features: [
       { text: "Welcome series" },
       { text: "Abandoned checkout" },
@@ -24,6 +25,7 @@ const plans = [
     emailCount: "13",
     variant: "plus" as const,
     audience: "Best for growing stores ready to scale LTV",
+    stripeUrl: "https://buy.stripe.com/7sYfZb17K12NgJC42jfnO01",
     features: [
       { text: "All Pulse features" },
       { text: "Customer win-back" },
@@ -38,6 +40,7 @@ const plans = [
     emailCount: "25",
     variant: "x" as const,
     audience: "For 6-figure+ stores maximizing every dollar",
+    stripeUrl: "https://buy.stripe.com/6oUdR3cQsbHrdxq2YffnO02",
     features: [
       { text: "All Pulse+ features" },
       { text: "Site abandoned" },
@@ -49,24 +52,19 @@ const plans = [
 
 export default function PricingPreview() {
   return (
-    <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <ScrollReveal>
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <h2 className="font-display text-[var(--text-h1)] font-bold">
             Choose the Right Plan for Your Business
           </h2>
-          <p className="mt-4 text-[#6b6b6b] text-base">
-            Flexible pricing plans designed to fit businesses of all sizes.
+          <p className="mt-3 sm:mt-4 text-[#6b6b6b] text-[15px] sm:text-base">
+            One-time payment. No monthly fees. No retainers.
           </p>
-          <div className="mt-6">
-            <span className="text-[11px] bg-[#1a1a1a] border border-[#333] rounded-full px-4 py-1.5 text-[#999]">
-              One-Time Payment
-            </span>
-          </div>
         </div>
       </ScrollReveal>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
         {plans.map((plan, i) => (
           <ScrollReveal key={plan.name} delay={i * 0.1}>
             <PricingCard {...plan} />
@@ -75,18 +73,18 @@ export default function PricingPreview() {
       </div>
 
       <ScrollReveal>
-        <p className="text-center text-sm text-[#6b6b6b] mt-8">
-          Not happy with results? We&apos;ll make it right. Results-backed setup.
-        </p>
+        <div className="mt-8 sm:mt-10 text-center bg-white/[0.02] border border-white/[0.05] rounded-xl px-5 py-4 max-w-lg mx-auto">
+          <p className="text-sm text-[#999]">
+            <span className="text-[#c4622d] font-medium">Results-backed guarantee.</span>{" "}
+            Not happy? We&apos;ll revise until you are.
+          </p>
+        </div>
       </ScrollReveal>
 
       <ScrollReveal>
-        <div className="mt-10 text-center">
-          <Link
-            href="/pricing"
-            className="btn-ghost text-sm text-[#f5f5f5]"
-          >
-            View all pricing details
+        <div className="mt-8 text-center">
+          <Link href="/pricing" className="btn-ghost text-sm text-[#f5f5f5]">
+            Compare all plans
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M5 12h14M12 5l7 7-7 7" />
             </svg>

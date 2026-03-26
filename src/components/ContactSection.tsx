@@ -16,17 +16,17 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="contact" className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <ScrollReveal>
-        <div className="max-w-2xl mx-auto text-center">
+        <div className="max-w-xl mx-auto text-center">
           <h2 className="font-display text-[var(--text-h1)] font-bold">
             Get in Touch
           </h2>
-          <p className="mt-4 text-[#6b6b6b] text-base leading-relaxed">
-            Have questions about our flows? Want to see if EcomPulse is right for your store? Reach out.
+          <p className="mt-3 sm:mt-4 text-[#6b6b6b] text-[15px] sm:text-base leading-relaxed">
+            Questions? Want to see if EcomPulse is right for your store?
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-6">
+          <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="mailto:hello@ecompulse.io"
               className="inline-flex items-center gap-2 text-sm text-[#c4622d] hover:text-white transition-colors"
@@ -37,7 +37,7 @@ export default function ContactSection() {
               </svg>
               hello@ecompulse.io
             </a>
-            <a href="#" className="btn-primary text-sm">
+            <a href="mailto:hello@ecompulse.io" className="btn-primary text-sm w-full sm:w-auto justify-center">
               Book a Free Call
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />
@@ -45,20 +45,17 @@ export default function ContactSection() {
             </a>
           </div>
 
-          <form onSubmit={handleSubmit} className="mt-10 flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto">
+          <form onSubmit={handleSubmit} className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center gap-3 max-w-md mx-auto">
             <input
               type="email"
-              placeholder="Your email address"
+              placeholder="Enter your email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
-              className="flex-1 w-full sm:w-auto bg-[#111] border border-[#222] rounded-full px-5 py-3 text-sm text-white placeholder-[#6b6b6b] focus:outline-none focus:border-[#c4622d] transition-colors"
+              className="flex-1 w-full bg-[#111] border border-white/[0.06] rounded-full px-5 py-3 text-sm text-white placeholder-[#6b6b6b] focus:outline-none focus:border-[#c4622d] transition-colors"
             />
-            <button
-              type="submit"
-              className="btn-primary w-full sm:w-auto text-sm"
-            >
-              Send us a message
+            <button type="submit" className="btn-primary w-full sm:w-auto text-sm justify-center">
+              Send
             </button>
           </form>
 
