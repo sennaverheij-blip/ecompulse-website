@@ -24,7 +24,7 @@ export default function CTABanner({
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <ScrollReveal>
-        <div className="bg-[#0a0a0a] border border-[#222] rounded-2xl px-8 sm:px-16 py-14 sm:py-20 text-center relative overflow-hidden">
+        <div className="cta-elevated px-8 sm:px-16 py-14 sm:py-20 text-center">
           {/* Subtle accent glow behind headline */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-[radial-gradient(ellipse_at_center,rgba(196,98,45,0.08)_0%,transparent_70%)] pointer-events-none" />
 

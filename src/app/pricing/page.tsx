@@ -131,20 +131,20 @@ export default function PricingPage() {
             </h2>
           </ScrollReveal>
           <ScrollReveal>
-            <div className="overflow-x-auto">
+            <div className="comparison-table overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
-                  <tr className="border-b border-[#222]">
-                    <th className="text-left py-3 pr-4 text-[#6b6b6b] font-normal">Feature</th>
-                    <th className="text-center py-3 px-4 text-white font-medium">Pulse</th>
-                    <th className="text-center py-3 px-4 text-[#c4622d] font-medium">Pulse+</th>
-                    <th className="text-center py-3 px-4 text-white font-medium">PulseX</th>
+                  <tr className="border-b border-[rgba(255,255,255,0.06)]">
+                    <th className="text-left py-4 pl-6 pr-4 text-[#6b6b6b] font-normal">Feature</th>
+                    <th className="text-center py-4 px-4 text-white font-medium">Pulse</th>
+                    <th className="text-center py-4 px-4 text-[#c4622d] font-medium">Pulse+</th>
+                    <th className="text-center py-4 px-4 text-white font-medium">PulseX</th>
                   </tr>
                 </thead>
                 <tbody>
                   {comparisonRows.map((row) => (
-                    <tr key={row.feature} className="border-b border-[#181818]">
-                      <td className="py-3 pr-4 text-[#999]">{row.feature}</td>
+                    <tr key={row.feature} className="border-b border-[rgba(255,255,255,0.04)]">
+                      <td className="py-3.5 pl-6 pr-4 text-[#999]">{row.feature}</td>
                       <td className="py-3 px-4">{row.pulse ? <Check /> : <Dash />}</td>
                       <td className="py-3 px-4">{row.plus ? <Check /> : <Dash />}</td>
                       <td className="py-3 px-4">{row.x ? <Check /> : <Dash />}</td>

@@ -12,7 +12,7 @@ const stats = [
 
 export default function StatsStrip() {
   return (
-    <section className="py-20 sm:py-24 bg-[#0a0a0a] border-y border-[#222]">
+    <section className="py-20 sm:py-24 stats-section">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-8">
           {stats.map((stat, i) => (

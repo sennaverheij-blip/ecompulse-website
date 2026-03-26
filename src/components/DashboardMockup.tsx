@@ -1,6 +1,6 @@
 export default function DashboardMockup() {
   return (
-    <div className="bg-[#111] border border-[#222] rounded-2xl p-5 sm:p-6 w-full max-w-md shadow-2xl shadow-black/40 relative">
+    <div className="dashboard-mockup p-5 sm:p-6 w-full max-w-md relative">
       {/* Orange accent top border */}
       <div className="absolute top-0 left-4 right-4 h-px bg-[#c4622d]/40" />
 

@@ -15,7 +15,7 @@ const logos = [
 
 export default function LogoStrip() {
   return (
-    <section className="py-16 border-y border-[#222] overflow-hidden">
+    <section className="py-16 logo-strip overflow-hidden">
       <ScrollReveal>
         <p className="text-center text-xs uppercase tracking-widest text-[#6b6b6b] mb-8">
           Works with the tools you already use
@@ -26,7 +26,7 @@ export default function LogoStrip() {
           {[...logos, ...logos].map((name, i) => (
             <div
               key={i}
-              className="mx-4 px-6 py-2.5 rounded-full border border-[#222] text-xs text-[#6b6b6b] whitespace-nowrap select-none"
+              className="mx-4 px-6 py-2.5 rounded-full border border-[rgba(255,255,255,0.06)] bg-[#0a0a0a] text-xs text-[#6b6b6b] whitespace-nowrap select-none"
             >
               {name}
             </div>

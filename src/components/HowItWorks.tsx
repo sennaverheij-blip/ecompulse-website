@@ -42,8 +42,8 @@ export default function HowItWorks() {
 
         {steps.map((step, i) => (
           <ScrollReveal key={step.number} delay={i * 0.1}>
-            <div className="text-center">
-              <div className="w-14 h-14 rounded-full border border-[#c4622d] flex items-center justify-center mx-auto mb-6">
+            <div className="step-card text-center">
+              <div className="w-14 h-14 rounded-full border border-[#c4622d] flex items-center justify-center mx-auto mb-6 shadow-[0_0_20px_rgba(196,98,45,0.15)]">
                 <span className="font-display text-2xl font-bold text-[#c4622d]">
                   {step.number}
                 </span>

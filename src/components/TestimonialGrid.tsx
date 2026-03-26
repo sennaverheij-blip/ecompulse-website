@@ -71,7 +71,7 @@ export default function TestimonialGrid() {
         <div className="flex flex-col gap-4">
           {smallTestimonials.map((t, i) => (
             <ScrollReveal key={t.name} delay={i * 0.1}>
-              <div className="bg-[#111] border border-[#222] rounded-xl p-5">
+              <div className="testimonial-card p-5">
                 <Stars />
                 <p className="mt-3 text-sm text-[#ccc] leading-relaxed">
                   &ldquo;{t.quote}&rdquo;

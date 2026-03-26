@@ -1,17 +1,15 @@
 @import "tailwindcss";
 
 @theme inline {
-  /* ─── Colors ─── */
   --color-orange: #c4622d;
   --color-orange-hover: #a85326;
-  --color-bg-dark: #0d0d0d;
+  --color-bg-dark: #050505;
   --color-bg-light: #ffffff;
-  --color-surface: #111111;
-  --color-border: #222222;
+  --color-surface: #0c0c0c;
+  --color-border: #1a1a1a;
   --color-text-primary: #f5f5f5;
   --color-text-secondary: #6b6b6b;
 
-  /* ─── Typography ─── */
   --text-display: clamp(48px, 6vw, 80px);
   --text-h1: clamp(32px, 4vw, 52px);
   --text-h2: 32px;
@@ -20,7 +18,6 @@
   --text-small: 14px;
   --text-xs: 12px;
 
-  /* ─── Fonts ─── */
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
@@ -35,7 +32,6 @@ body {
   font-family: var(--font-body), system-ui, sans-serif;
 }
 
-/* ─── Font utility ─── */
 .font-display {
   font-family: var(--font-display), system-ui, sans-serif;
 }
@@ -56,7 +52,6 @@ body {
   transform: translateY(0);
 }
 
-/* Stagger delays for sibling elements */
 .fade-up-delay-1 { transition-delay: 0.1s; }
 .fade-up-delay-2 { transition-delay: 0.2s; }
 .fade-up-delay-3 { transition-delay: 0.3s; }
@@ -72,14 +67,15 @@ body {
   padding: 14px 28px;
   font-weight: 500;
   font-size: 14px;
-  transition: transform 0.15s ease, opacity 0.15s ease;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
   cursor: pointer;
   border: none;
+  box-shadow: 0 4px 20px rgba(196, 98, 45, 0.3);
 }
 
 .btn-primary:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(196, 98, 45, 0.4);
 }
 
 .btn-ghost {
@@ -88,27 +84,28 @@ body {
   gap: 8px;
   background: transparent;
   color: currentColor;
-  border: 1.5px solid currentColor;
+  border: 1.5px solid rgba(255,255,255,0.15);
   border-radius: 100px;
   padding: 14px 28px;
   font-weight: 500;
   font-size: 14px;
-  transition: background 0.15s ease, transform 0.15s ease;
+  transition: background 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
   cursor: pointer;
 }
 
 .btn-ghost:hover {
   background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255,255,255,0.25);
   transform: translateY(-1px);
 }
 
-/* ─── Subtle grid/dot pattern ─── */
+/* ─── Subtle dot pattern ─── */
 .dot-pattern {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-image: radial-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px);
   background-size: 32px 32px;
 }
 
-/* ─── Marquee (logo strip) ─── */
+/* ─── Marquee ─── */
 @keyframes marquee {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
@@ -130,9 +127,28 @@ body {
   line-height: 1;
 }
 
-/* ─── FAQ clean ─── */
+/* ─── Shared card depth ─── */
+.card-elevated {
+  background: linear-gradient(180deg, #111 0%, #0a0a0a 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.5),
+    0 12px 40px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+}
+
+.card-elevated:hover {
+  border-color: rgba(255,255,255,0.1);
+  box-shadow:
+    0 4px 12px rgba(0,0,0,0.5),
+    0 20px 50px rgba(0,0,0,0.45),
+    inset 0 1px 0 rgba(255,255,255,0.06);
+}
+
+/* ─── FAQ ─── */
 .faq-item {
-  border-bottom: 1px solid #222;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
   transition: all 0.2s ease;
 }
 
@@ -143,46 +159,148 @@ body {
 
 /* ─── Feature visual cards ─── */
 .feature-visual {
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 12px;
-  padding: 24px;
+  background: linear-gradient(180deg, #111 0%, #090909 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.5),
+    0 16px 48px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.04);
 }
 
-/* ─── Pricing card ─── */
+/* ─── Pricing cards ─── */
 .pricing-card {
-  background: #111;
-  border: 1px solid #222;
-  border-radius: 16px;
-  transition: transform 0.2s ease;
+  background: linear-gradient(180deg, #111 0%, #090909 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 20px;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.5),
+    0 16px 48px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .pricing-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow:
+    0 8px 24px rgba(0,0,0,0.5),
+    0 24px 60px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.06);
 }
 
 .pricing-card-featured {
-  background: #111;
+  background: linear-gradient(180deg, #151008 0%, #0a0705 100%);
   border: 2px solid var(--color-orange);
-  border-radius: 16px;
-  transition: transform 0.2s ease;
+  border-radius: 20px;
+  box-shadow:
+    0 4px 16px rgba(196, 98, 45, 0.15),
+    0 16px 48px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(196, 98, 45, 0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .pricing-card-featured:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
+  box-shadow:
+    0 8px 24px rgba(196, 98, 45, 0.2),
+    0 24px 60px rgba(0,0,0,0.5),
+    inset 0 1px 0 rgba(196, 98, 45, 0.12);
 }
 
-/* ─── Result card (data readout) ─── */
+/* ─── Result card ─── */
 .result-card {
-  background: #111;
-  border: 1px solid #222;
+  background: linear-gradient(180deg, #0e0e0e 0%, #090909 100%);
+  border: 1px solid rgba(255,255,255,0.06);
   border-left: 3px solid var(--color-orange);
-  border-radius: 8px;
+  border-radius: 12px;
   padding: 20px 24px;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.4),
+    0 8px 24px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.03);
 }
 
 /* ─── Testimonial ─── */
 .testimonial-hero {
   border-left: 3px solid var(--color-orange);
   padding-left: 24px;
+}
+
+/* ─── Dashboard mockup ─── */
+.dashboard-mockup {
+  background: linear-gradient(180deg, #0e0e0e 0%, #080808 100%);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 20px;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.6),
+    0 24px 64px rgba(0,0,0,0.5),
+    0 0 0 1px rgba(255,255,255,0.03),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+
+/* ─── CTA banner ─── */
+.cta-elevated {
+  background: linear-gradient(180deg, #0c0c0c 0%, #060606 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 24px;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.5),
+    0 24px 64px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.04);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ─── Stats section ─── */
+.stats-section {
+  background: linear-gradient(180deg, #080808 0%, #050505 100%);
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+
+/* ─── Testimonial small cards ─── */
+.testimonial-card {
+  background: linear-gradient(180deg, #0e0e0e 0%, #090909 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.4),
+    0 8px 24px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+  transition: border-color 0.2s ease;
+}
+
+.testimonial-card:hover {
+  border-color: rgba(255,255,255,0.1);
+}
+
+/* ─── How it works step card ─── */
+.step-card {
+  background: linear-gradient(180deg, #0c0c0c 0%, #070707 100%);
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 32px 24px;
+  box-shadow:
+    0 2px 8px rgba(0,0,0,0.4),
+    0 8px 24px rgba(0,0,0,0.3),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+/* ─── Comparison table ─── */
+.comparison-table {
+  background: linear-gradient(180deg, #0c0c0c 0%, #070707 100%);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 16px;
+  box-shadow:
+    0 4px 16px rgba(0,0,0,0.4),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+  overflow: hidden;
+}
+
+/* ─── Logo strip ─── */
+.logo-strip {
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background: linear-gradient(180deg, #080808 0%, #050505 100%);
 }

@@ -26,7 +26,7 @@ export default function PricingCard({
   const isFeatured = variant === "plus";
 
   return (
-    <div className={`${isFeatured ? "pricing-card-featured" : "pricing-card"} p-7 flex flex-col justify-between h-full fade-up relative`}>
+    <div className={`${isFeatured ? "pricing-card-featured" : "pricing-card"} p-7 flex flex-col justify-between h-full relative`}>
       {isFeatured && (
         <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
           <span className="bg-[#c4622d] text-white text-[11px] font-semibold px-4 py-1 rounded-full whitespace-nowrap">

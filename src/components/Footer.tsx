@@ -11,7 +11,7 @@ const footerLinks = {
 
 export default function Footer() {
   return (
-    <footer className="border-t border-[#222] pt-16 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <footer className="border-t border-white/[0.04] pt-16 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-12">
         <div>
           <Link href="/" className="flex items-center gap-2.5 mb-4">
@@ -43,7 +43,7 @@ export default function Footer() {
         ))}
       </div>
 
-      <div className="mt-16 pt-8 border-t border-[#222] flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="mt-16 pt-8 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-xs text-[#555]">
           Copyright &copy; 2025 EcomPulseMarketing LLC. All rights reserved.
         </p>

@@ -15,7 +15,7 @@ interface SplitSectionProps {
 
 function AnalyticsMockup() {
   return (
-    <div className="bg-[#111] border border-[#222] rounded-2xl p-5 w-full">
+    <div className="card-elevated p-5 w-full">
       <div className="flex items-center justify-between mb-4">
         <span className="text-xs text-[#6b6b6b]">Site Overview</span>
         <span className="text-[10px] text-green-500 flex items-center gap-1">
@@ -47,7 +47,7 @@ function AnalyticsMockup() {
 
 function KeywordsMockup() {
   return (
-    <div className="bg-[#111] border border-[#222] rounded-2xl p-5 w-full">
+    <div className="card-elevated p-5 w-full">
       <div className="mb-3">
         <p className="text-[10px] text-[#6b6b6b]">Displays Amount At</p>
         <p className="text-2xl font-bold text-white font-display">35.6K</p>
