@@ -20,7 +20,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 max-w-5xl mx-auto">
       <ScrollReveal>
         <h2 className="font-display text-[var(--text-h1)] font-bold text-center">
           How It Works

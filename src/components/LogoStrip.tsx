@@ -1,32 +1,24 @@
 import ScrollReveal from "./ScrollReveal";
 
 const logos = [
-  "Shopify",
-  "Klaviyo",
-  "WooCommerce",
-  "DTC Brand",
-  "Dropshipping Store",
-  "Shopify",
-  "Klaviyo",
-  "WooCommerce",
-  "DTC Brand",
-  "Dropshipping Store",
+  "Shopify", "Klaviyo", "WooCommerce", "DTC Brand", "Dropshipping Store",
+  "Shopify", "Klaviyo", "WooCommerce", "DTC Brand", "Dropshipping Store",
 ];
 
 export default function LogoStrip() {
   return (
-    <section className="py-16 logo-strip overflow-hidden">
+    <section className="py-12 sm:py-14 logo-strip overflow-hidden">
       <ScrollReveal>
-        <p className="text-center text-xs uppercase tracking-widest text-[#6b6b6b] mb-8">
+        <p className="text-center text-[11px] uppercase tracking-[0.15em] text-[#555] mb-6 sm:mb-8">
           Works with the tools you already use
         </p>
       </ScrollReveal>
-      <div className="relative">
+      <div className="relative max-w-5xl mx-auto">
         <div className="flex marquee-track w-max">
           {[...logos, ...logos].map((name, i) => (
             <div
               key={i}
-              className="mx-4 px-6 py-2.5 rounded-full border border-[rgba(255,255,255,0.06)] bg-[#0a0a0a] text-xs text-[#6b6b6b] whitespace-nowrap select-none"
+              className="mx-3 px-5 py-2 rounded-full border border-white/[0.06] bg-white/[0.02] text-[11px] text-[#555] whitespace-nowrap select-none"
             >
               {name}
             </div>

@@ -28,16 +28,16 @@ export default function ContactSection() {
 
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="mailto:hello@ecompulse.io"
+              href="mailto:info@joinecompulse.com"
               className="inline-flex items-center gap-2 text-sm text-[#c4622d] hover:text-white transition-colors"
             >
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
                 <polyline points="22,6 12,13 2,6" />
               </svg>
-              hello@ecompulse.io
+              info@joinecompulse.com
             </a>
-            <a href="mailto:hello@ecompulse.io" className="btn-primary text-sm w-full sm:w-auto justify-center">
+            <a href="mailto:info@joinecompulse.com" className="btn-primary text-sm w-full sm:w-auto justify-center">
               Book a Free Call
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                 <path d="M5 12h14M12 5l7 7-7 7" />

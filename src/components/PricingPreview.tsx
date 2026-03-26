@@ -52,7 +52,7 @@ const plans = [
 
 export default function PricingPreview() {
   return (
-    <section className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 max-w-6xl mx-auto">
       <ScrollReveal>
         <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-16">
           <h2 className="font-display text-[var(--text-h1)] font-bold">
