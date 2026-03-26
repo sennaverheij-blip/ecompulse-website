@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 
 const navLinks = [
@@ -19,13 +20,8 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-[#050505]/85 backdrop-blur-xl border-b border-white/[0.04]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-[#c4622d] flex items-center justify-center">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-              </svg>
-            </div>
-            <span className="text-white font-semibold text-[15px]">EcomPulse</span>
+          <Link href="/" className="flex items-center">
+            <Image src="/logo.png" alt="EcomPulse" width={120} height={30} className="h-6 w-auto" />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
@@ -44,12 +40,9 @@ export default function Navbar() {
 
           <Link
             href="/pricing"
-            className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-[#c4622d] border border-[#c4622d] rounded-lg px-5 py-2 hover:bg-[#c4622d] hover:text-white transition-all duration-200"
+            className="hidden md:inline-flex items-center gap-2 text-sm font-medium text-white bg-white/[0.06] border border-white/[0.1] rounded-full px-5 py-2 hover:bg-white/[0.1] transition-all duration-200"
           >
-            Check The Packages
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M5 12h14M12 5l7 7-7 7" />
-            </svg>
+            Get started
           </Link>
 
           <button
@@ -71,7 +64,7 @@ export default function Navbar() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden bg-[#0a0a0a]/95 backdrop-blur-md border-b border-white/5">
+        <div className="md:hidden bg-[#050505]/95 backdrop-blur-xl border-b border-white/5">
           <div className="px-4 py-4 flex flex-col gap-4">
             {navLinks.map((link) => (
               <Link
@@ -85,13 +78,10 @@ export default function Navbar() {
             ))}
             <Link
               href="/pricing"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#c4622d] border border-[#c4622d] rounded-lg px-5 py-2.5 w-fit hover:bg-[#c4622d] hover:text-white transition-all"
+              className="text-sm font-medium text-white bg-white/[0.06] border border-white/[0.1] rounded-full px-5 py-2.5 w-fit"
               onClick={() => setMobileOpen(false)}
             >
-              Check The Packages
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
+              Get started
             </Link>
           </div>
         </div>

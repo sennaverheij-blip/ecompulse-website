@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, DM_Sans } from "next/font/google";
+import { Space_Grotesk, DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -14,6 +14,13 @@ const dmSans = DM_Sans({
   weight: ["400", "500", "600"],
 });
 
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  variable: "--font-accent",
+  weight: ["400", "500", "600"],
+  style: ["italic"],
+});
+
 export const metadata: Metadata = {
   title: "EcomPulse — Done-for-You Klaviyo Email Flows",
   description:
@@ -26,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} antialiased`}>
+    <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${playfair.variable} antialiased`}>
       <body className="min-h-screen font-body">{children}</body>
     </html>
   );
