@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ScrollReveal from "./ScrollReveal";
 
 interface CheckItem {
   text: string;
@@ -14,9 +15,9 @@ interface SplitSectionProps {
 
 function AnalyticsMockup() {
   return (
-    <div className="dashboard-card p-5 w-full">
+    <div className="bg-[#111] border border-[#222] rounded-2xl p-5 w-full">
       <div className="flex items-center justify-between mb-4">
-        <span className="text-xs text-[#666]">Site Overview</span>
+        <span className="text-xs text-[#6b6b6b]">Site Overview</span>
         <span className="text-[10px] text-green-500 flex items-center gap-1">
           <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3">
             <path d="M18 15l-6-6-6 6" />
@@ -25,26 +26,18 @@ function AnalyticsMockup() {
         </span>
       </div>
       <div className="mb-3">
-        <p className="text-[10px] text-[#555]">Visibility</p>
-        <p className="text-lg font-bold text-white">59.8K</p>
+        <p className="text-[10px] text-[#6b6b6b]">Visibility</p>
+        <p className="text-lg font-bold text-white font-display">59.8K</p>
       </div>
-      {/* Mini sidebar + chart */}
       <div className="flex gap-3">
         <div className="w-16 space-y-2">
           {["Dashboard", "Flows", "Campaigns", "Analytics"].map((item) => (
-            <div key={item} className="text-[8px] text-[#555] py-1 px-2 rounded bg-[#161616]">{item}</div>
+            <div key={item} className="text-[8px] text-[#6b6b6b] py-1 px-2 rounded bg-[#0d0d0d]">{item}</div>
           ))}
         </div>
         <div className="flex-1 relative h-20">
           <svg viewBox="0 0 200 80" className="w-full h-full" preserveAspectRatio="none">
-            <defs>
-              <linearGradient id="splitGrad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#c4622d" stopOpacity="0.2" />
-                <stop offset="100%" stopColor="#c4622d" stopOpacity="0" />
-              </linearGradient>
-            </defs>
             <path d="M0 60 C40 50, 60 25, 100 30 C140 35, 160 10, 200 15" fill="none" stroke="#c4622d" strokeWidth="2" />
-            <path d="M0 60 C40 50, 60 25, 100 30 C140 35, 160 10, 200 15 L200 80 L0 80 Z" fill="url(#splitGrad)" />
           </svg>
         </div>
       </div>
@@ -54,13 +47,13 @@ function AnalyticsMockup() {
 
 function KeywordsMockup() {
   return (
-    <div className="dashboard-card p-5 w-full">
+    <div className="bg-[#111] border border-[#222] rounded-2xl p-5 w-full">
       <div className="mb-3">
-        <p className="text-[10px] text-[#555]">Displays Amount At</p>
-        <p className="text-2xl font-bold text-white">35.6K</p>
+        <p className="text-[10px] text-[#6b6b6b]">Displays Amount At</p>
+        <p className="text-2xl font-bold text-white font-display">35.6K</p>
       </div>
       <div className="mb-4">
-        <p className="text-[10px] text-[#666] mb-2">Top Keywords</p>
+        <p className="text-[10px] text-[#6b6b6b] mb-2">Top Keywords</p>
         <div className="space-y-1.5">
           {[
             { keyword: "ecommerce email flows", vol: "12.4K" },
@@ -69,8 +62,8 @@ function KeywordsMockup() {
             { keyword: "email marketing roi", vol: "4.8K" },
           ].map((kw) => (
             <div key={kw.keyword} className="flex items-center justify-between text-[10px]">
-              <span className="text-[#aaa]">{kw.keyword}</span>
-              <span className="text-[#666]">{kw.vol}</span>
+              <span className="text-[#999]">{kw.keyword}</span>
+              <span className="text-[#6b6b6b]">{kw.vol}</span>
             </div>
           ))}
         </div>
@@ -98,11 +91,11 @@ export default function SplitSection({
 }: SplitSectionProps) {
   const textContent = (
     <div className="flex flex-col justify-center">
-      <h2 className="text-2xl sm:text-3xl font-bold leading-snug">{heading}</h2>
-      <p className="mt-4 text-[#888] text-sm leading-relaxed">{subtext}</p>
+      <h2 className="font-display text-[var(--text-h2)] font-bold leading-snug">{heading}</h2>
+      <p className="mt-4 text-[#6b6b6b] text-sm leading-relaxed">{subtext}</p>
       <ul className="mt-6 space-y-3">
         {checks.map((c) => (
-          <li key={c.text} className="flex items-start gap-3 text-sm text-[#aaa]">
+          <li key={c.text} className="flex items-start gap-3 text-sm text-[#999]">
             <svg className="mt-0.5 shrink-0 text-[#c4622d]" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M20 6L9 17l-5-5" />
             </svg>
@@ -111,10 +104,7 @@ export default function SplitSection({
         ))}
       </ul>
       <div className="mt-8">
-        <Link
-          href="/pricing"
-          className="inline-flex items-center gap-2 text-sm font-medium text-[#c4622d] border border-[#c4622d] rounded-lg px-5 py-2.5 hover:bg-[#c4622d] hover:text-white transition-all duration-200"
-        >
+        <Link href="/pricing" className="btn-ghost text-sm text-[#f5f5f5]">
           Check The Packages
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M5 12h14M12 5l7 7-7 7" />
@@ -125,27 +115,26 @@ export default function SplitSection({
   );
 
   const imageContent = (
-    <div className="relative">
-      {visual === "analytics" ? <AnalyticsMockup /> : <KeywordsMockup />}
-      <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[radial-gradient(ellipse_at_center,rgba(196,98,45,0.15)_0%,transparent_70%)] pointer-events-none" />
-    </div>
+    <div>{visual === "analytics" ? <AnalyticsMockup /> : <KeywordsMockup />}</div>
   );
 
   return (
     <section className="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-        {imagePosition === "left" ? (
-          <>
-            {imageContent}
-            {textContent}
-          </>
-        ) : (
-          <>
-            {textContent}
-            {imageContent}
-          </>
-        )}
-      </div>
+      <ScrollReveal>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {imagePosition === "left" ? (
+            <>
+              {imageContent}
+              {textContent}
+            </>
+          ) : (
+            <>
+              {textContent}
+              {imageContent}
+            </>
+          )}
+        </div>
+      </ScrollReveal>
     </section>
   );
 }

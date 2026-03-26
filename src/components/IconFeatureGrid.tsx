@@ -1,32 +1,34 @@
+import ScrollReveal from "./ScrollReveal";
+
 const features = [
   {
     icon: "retention",
-    title: "Customer Retention Optimization",
+    title: "Keep More Customers Coming Back",
     description: "Predict churn risks and boost customer loyalty with AI-driven insights.",
   },
   {
     icon: "campaigns",
-    title: "Personalized Campaigns",
+    title: "Emails That Feel Personal, At Scale",
     description: "Tailor campaigns to individual preferences using data analytics to increase engagement.",
   },
   {
     icon: "funnel",
-    title: "Sales Funnel Enhancement",
+    title: "Plug the Revenue Leaks in Your Funnel",
     description: "Utilize predictive modeling to identify bottlenecks and streamline the purchasing process.",
   },
   {
     icon: "recommend",
-    title: "Product Recommendation Systems",
+    title: "Show Every Customer Their Next Purchase",
     description: "Leverage machine learning algorithms to suggest products based on user behavior.",
   },
   {
     icon: "segment",
-    title: "Market Segmentation",
+    title: "Target the Right Customer at the Right Moment",
     description: "Divide your customer base into distinct groups to target marketing efforts effectively.",
   },
   {
     icon: "feedback",
-    title: "Customer Feedback Integration",
+    title: "Know What\u2019s Working \u2014 In Real Time",
     description: "Implement real-time feedback loops to improve products and services based on user input.",
   },
 ];
@@ -80,12 +82,14 @@ export default function IconFeatureGrid() {
   return (
     <section className="py-24 sm:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-14">
-        {features.map((f) => (
-          <div key={f.title}>
-            <FeatureIcon type={f.icon} />
-            <h3 className="mt-4 text-base font-semibold text-white">{f.title}</h3>
-            <p className="mt-2 text-sm text-[#888] leading-relaxed">{f.description}</p>
-          </div>
+        {features.map((f, i) => (
+          <ScrollReveal key={f.title} delay={i * 0.07}>
+            <div>
+              <FeatureIcon type={f.icon} />
+              <h3 className="mt-4 font-display text-[var(--text-h3)] font-semibold text-white">{f.title}</h3>
+              <p className="mt-2 text-sm text-[#6b6b6b] leading-relaxed">{f.description}</p>
+            </div>
+          </ScrollReveal>
         ))}
       </div>
     </section>
