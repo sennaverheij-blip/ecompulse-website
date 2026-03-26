@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import HeroAvatars from "@/components/HeroAvatars";
 import LogoStrip from "@/components/LogoStrip";
@@ -20,8 +21,8 @@ export default function Home() {
 
       <main>
         {/* ─── Hero ─── */}
-        <section className="relative pt-24 sm:pt-32 lg:pt-36 pb-8 overflow-hidden hero-bg">
-          {/* Floating left card — hidden mobile/tablet */}
+        <section className="relative pt-24 sm:pt-32 lg:pt-36 pb-0 overflow-hidden hero-bg">
+          {/* Floating left card */}
           <div className="hidden xl:block absolute left-[3%] 2xl:left-[6%] top-[160px] w-[220px]">
             <ScrollReveal delay={0.3}>
               <div className="floating-card p-4">
@@ -52,7 +53,7 @@ export default function Home() {
             </ScrollReveal>
           </div>
 
-          {/* Floating right cards — hidden mobile/tablet */}
+          {/* Floating right cards */}
           <div className="hidden xl:block absolute right-[3%] 2xl:right-[6%] top-[130px] w-[200px]">
             <ScrollReveal delay={0.4}>
               <div className="floating-card p-4">
@@ -104,7 +105,6 @@ export default function Home() {
               </p>
             </ScrollReveal>
 
-            {/* Guarantee micro-copy — visible early for objection handling */}
             <ScrollReveal delay={0.12}>
               <p className="mt-3 text-xs text-[#555]">
                 ✓ Results-backed guarantee &nbsp;·&nbsp; ✓ One-time payment &nbsp;·&nbsp; ✓ No monthly fees
@@ -132,64 +132,18 @@ export default function Home() {
             </ScrollReveal>
           </div>
 
-          {/* Email preview cards — horizontally scrollable on mobile, flex on desktop */}
-          <ScrollReveal delay={0.3}>
-            <div className="relative mt-14 sm:mt-20 pb-4 overflow-x-auto sm:overflow-visible">
-              <div className="flex items-start justify-start sm:justify-center gap-4 sm:gap-6 px-5 sm:px-4 w-max sm:w-auto mx-auto">
-                {/* Card 1 — Welcome */}
-                <div className="floating-card w-[240px] sm:w-[260px] -rotate-1 sm:-rotate-2 flex-shrink-0 overflow-hidden">
-                  <div className="bg-[#c4622d]/15 px-4 py-2.5 border-b border-white/[0.04]">
-                    <p className="text-[10px] text-[#c4622d] font-medium">Welcome Series &middot; Email 1</p>
-                  </div>
-                  <div className="p-4">
-                    <div className="w-full h-16 sm:h-20 rounded-lg bg-white/[0.03] flex items-center justify-center mb-3">
-                      <span className="text-[10px] text-[#444] font-display">BRAND HEADER</span>
-                    </div>
-                    <p className="text-[11px] text-white font-medium">Welcome to the family 👋</p>
-                    <p className="text-[9px] text-[#666] mt-1 leading-relaxed">Here&apos;s 10% off your first order...</p>
-                    <div className="mt-3 bg-[#c4622d] rounded-md px-3 py-1.5 text-center">
-                      <span className="text-[9px] text-white font-medium">SHOP NOW — 10% OFF</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 2 — Abandoned Cart (larger) */}
-                <div className="floating-card w-[260px] sm:w-[280px] z-10 flex-shrink-0 overflow-hidden -translate-y-3 sm:-translate-y-4">
-                  <div className="bg-[#c4622d]/15 px-4 py-2.5 border-b border-white/[0.04]">
-                    <p className="text-[10px] text-[#c4622d] font-medium">Abandoned Cart &middot; Email 1</p>
-                    <p className="text-[8px] text-[#666] mt-0.5">34% avg recovery rate</p>
-                  </div>
-                  <div className="p-4">
-                    <div className="w-full h-20 sm:h-24 rounded-lg bg-white/[0.03] flex items-center justify-center mb-3">
-                      <div className="text-center">
-                        <span className="text-[10px] text-[#444] font-display">PRODUCT IMAGE</span>
-                        <p className="text-[8px] text-[#666] mt-1">$89.00</p>
-                      </div>
-                    </div>
-                    <p className="text-[11px] text-white font-medium">You left something behind</p>
-                    <p className="text-[9px] text-[#666] mt-1 leading-relaxed">Complete your order before it sells out.</p>
-                    <div className="mt-3 bg-[#c4622d] rounded-md px-3 py-1.5 text-center">
-                      <span className="text-[9px] text-white font-medium">COMPLETE MY ORDER</span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Card 3 — Win-back */}
-                <div className="floating-card w-[240px] sm:w-[260px] rotate-1 sm:rotate-2 flex-shrink-0 overflow-hidden">
-                  <div className="bg-[#c4622d]/15 px-4 py-2.5 border-b border-white/[0.04]">
-                    <p className="text-[10px] text-[#c4622d] font-medium">Win-back &middot; Email 2</p>
-                  </div>
-                  <div className="p-4">
-                    <div className="w-full h-16 sm:h-20 rounded-lg bg-white/[0.03] flex items-center justify-center mb-3">
-                      <span className="text-[10px] text-[#444] font-display">PRODUCT GRID</span>
-                    </div>
-                    <p className="text-[11px] text-white font-medium">We miss you 💛</p>
-                    <p className="text-[9px] text-[#666] mt-1 leading-relaxed">Here&apos;s 15% off to welcome you back...</p>
-                    <div className="mt-3 bg-[#c4622d] rounded-md px-3 py-1.5 text-center">
-                      <span className="text-[9px] text-white font-medium">COME BACK — 15% OFF</span>
-                    </div>
-                  </div>
-                </div>
+          {/* Dashboard image — the hero visual */}
+          <ScrollReveal delay={0.25}>
+            <div className="mt-12 sm:mt-16 max-w-4xl mx-auto px-5 sm:px-8">
+              <div className="dashboard-image-wrapper">
+                <Image
+                  src="/dashboard.png"
+                  alt="EcomPulse Dashboard — A$1,354,591.40 total revenue"
+                  width={1200}
+                  height={750}
+                  className="w-full h-auto"
+                  priority
+                />
               </div>
             </div>
           </ScrollReveal>
@@ -198,33 +152,24 @@ export default function Home() {
         {/* ─── Logo Strip ─── */}
         <LogoStrip />
 
-        {/* ─── How It Works ─── */}
         <div id="how-it-works">
           <HowItWorks />
         </div>
 
-        {/* ─── Stats Strip ─── */}
         <StatsStrip />
 
-        {/* ─── Social proof BEFORE features (moved up) ─── */}
         <TestimonialGrid />
 
-        {/* ─── Alternating Features ─── */}
         <AlternatingFeatures />
 
-        {/* ─── FAQ (before pricing — handles objections first) ─── */}
         <FAQ />
 
-        {/* ─── Pricing ─── */}
         <PricingPreview />
 
-        {/* ─── Contact ─── */}
         <ContactSection />
 
-        {/* ─── Final CTA ─── */}
         <CTABanner />
 
-        {/* Footer */}
         <Footer />
       </main>
     </div>
