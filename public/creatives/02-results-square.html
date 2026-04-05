@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1080">
+<title>Ad Creative — Results</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1080px;
+    height: 1080px;
+    background: #050505;
+    color: #f5f5f5;
+    font-family: 'DM Sans', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .glow {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 400px;
+    background: radial-gradient(ellipse at center, rgba(196,98,45,0.1) 0%, transparent 70%);
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 70px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .top-label {
+    font-size: 13px;
+    color: #c4622d;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 24px;
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 64px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 20px;
+  }
+
+  h1 span {
+    color: #c4622d;
+  }
+
+  .sub {
+    font-size: 20px;
+    color: #777;
+    line-height: 1.5;
+    margin-bottom: 40px;
+  }
+
+  .dashboard {
+    flex: 1;
+    background: #222;
+    border-radius: 20px;
+    border: 3px solid #6C6C6C;
+    padding: 4px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+
+  .dashboard-inner {
+    background: white;
+    border-radius: 16px;
+    height: 100%;
+    padding: 36px;
+    color: #1a1a1a;
+  }
+
+  .dash-header {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 8px;
+  }
+
+  .dash-period {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 24px;
+  }
+
+  .dash-row {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 28px;
+  }
+
+  .dash-metric {
+    flex: 1;
+    background: #f8f8f8;
+    border-radius: 12px;
+    padding: 20px 24px;
+    border: 1px solid #eee;
+  }
+
+  .dash-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1;
+    margin-bottom: 4px;
+  }
+
+  .dash-label {
+    font-size: 13px;
+    color: #888;
+  }
+
+  .dash-change {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 13px;
+    color: #22c55e;
+    font-weight: 600;
+    margin-top: 6px;
+  }
+
+  .bottom-bar {
+    display: flex;
+    gap: 24px;
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+  }
+
+  .bottom-item {
+    flex: 1;
+  }
+
+  .bottom-item-label {
+    font-size: 11px;
+    color: #888;
+    margin-bottom: 2px;
+  }
+
+  .bottom-item-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="content">
+    <div class="top-label">Real client results</div>
+
+    <h1><span>ZAR 29,324</span> in email revenue<br>in 7 days.</h1>
+
+    <p class="sub">One-time setup. No retainers. No monthly fees.</p>
+
+    <div class="dashboard">
+      <div class="dashboard-inner">
+        <div class="dash-header"><strong>Business performance summary</strong></div>
+        <div class="dash-period">Mar 2, 2026 – Mar 9, 2026</div>
+
+        <div class="dash-row">
+          <div class="dash-metric">
+            <div class="dash-value">ZAR 122,185</div>
+            <div class="dash-label">Total revenue</div>
+            <div class="dash-change">↑ 150% vs. previous period</div>
+          </div>
+          <div class="dash-metric">
+            <div class="dash-value">ZAR 29,324</div>
+            <div class="dash-label">Attributed revenue (24%)</div>
+            <div class="dash-change">↑ 1601% vs. previous period</div>
+          </div>
+        </div>
+
+        <div class="bottom-bar">
+          <div class="bottom-item">
+            <div class="bottom-item-label">Flows</div>
+            <div class="bottom-item-value">ZAR 29,324</div>
+          </div>
+          <div class="bottom-item">
+            <div class="bottom-item-label">Email</div>
+            <div class="bottom-item-value">100%</div>
+          </div>
+          <div class="bottom-item">
+            <div class="bottom-item-label">Per recipient</div>
+            <div class="bottom-item-value">ZAR 14.33</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

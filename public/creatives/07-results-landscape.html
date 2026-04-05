@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1200">
+<title>Ad Creative — Results (Link Ad)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    width: 1200px;
+    height: 628px;
+    background: #050505;
+    color: #f5f5f5;
+    font-family: 'DM Sans', sans-serif;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .glow {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 400px;
+    background: radial-gradient(ellipse at center, rgba(196,98,45,0.1) 0%, transparent 70%);
+  }
+
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 48px 56px;
+    height: 100%;
+    display: flex;
+    gap: 48px;
+    align-items: center;
+  }
+
+  .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .top-label {
+    font-size: 12px;
+    color: #c4622d;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 42px;
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
+    margin-bottom: 16px;
+  }
+
+  h1 span { color: #c4622d; }
+
+  .sub {
+    font-size: 17px;
+    color: #777;
+    line-height: 1.5;
+    margin-bottom: 28px;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 28px;
+  }
+
+  .stat-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 28px;
+    font-weight: 700;
+    color: #c4622d;
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: #555;
+    margin-top: 2px;
+  }
+
+  .cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #c4622d;
+    color: white;
+    border-radius: 100px;
+    padding: 14px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 4px 20px rgba(196,98,45,0.3);
+    width: fit-content;
+  }
+
+  .right {
+    width: 480px;
+    flex-shrink: 0;
+  }
+
+  .dashboard {
+    background: #222;
+    border-radius: 16px;
+    border: 3px solid #6C6C6C;
+    padding: 4px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.5);
+    transform: perspective(800px) rotateY(-3deg);
+  }
+
+  .dashboard-inner {
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    color: #1a1a1a;
+  }
+
+  .dash-header {
+    font-size: 12px;
+    color: #666;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  .dash-period {
+    font-size: 10px;
+    color: #999;
+    margin-bottom: 16px;
+  }
+
+  .dash-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  .dash-metric {
+    flex: 1;
+    background: #f8f8f8;
+    border-radius: 10px;
+    padding: 14px 16px;
+    border: 1px solid #eee;
+  }
+
+  .dash-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 2px;
+  }
+
+  .dash-label {
+    font-size: 10px;
+    color: #888;
+  }
+
+  .dash-change {
+    font-size: 11px;
+    color: #22c55e;
+    font-weight: 600;
+    margin-top: 4px;
+  }
+
+  .dash-bottom {
+    display: flex;
+    gap: 16px;
+    border-top: 1px solid #eee;
+    padding-top: 12px;
+  }
+
+  .dash-bottom-item {
+    flex: 1;
+  }
+
+  .dash-bottom-label {
+    font-size: 9px;
+    color: #888;
+  }
+
+  .dash-bottom-value {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1a1a1a;
+  }
+</style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="content">
+    <div class="left">
+      <div class="top-label">Real client results</div>
+      <h1><span>ZAR 29,324</span> in email revenue — in just 7 days</h1>
+      <p class="sub">Done-for-you Klaviyo flows. One-time fee. No retainers.</p>
+
+      <div class="stats-row">
+        <div>
+          <div class="stat-value">150%</div>
+          <div class="stat-label">Revenue increase</div>
+        </div>
+        <div>
+          <div class="stat-value">1601%</div>
+          <div class="stat-label">Email revenue growth</div>
+        </div>
+        <div>
+          <div class="stat-value">5-7d</div>
+          <div class="stat-label">To go live</div>
+        </div>
+      </div>
+
+      <div class="cta">
+        Get My Flows Built →
+      </div>
+    </div>
+
+    <div class="right">
+      <div class="dashboard">
+        <div class="dashboard-inner">
+          <div class="dash-header">Business performance summary</div>
+          <div class="dash-period">Mar 2, 2026 – Mar 9, 2026</div>
+          <div class="dash-row">
+            <div class="dash-metric">
+              <div class="dash-value">ZAR 122,185</div>
+              <div class="dash-label">Total revenue</div>
+              <div class="dash-change">↑ 150%</div>
+            </div>
+            <div class="dash-metric">
+              <div class="dash-value">ZAR 29,324</div>
+              <div class="dash-label">Attributed (24%)</div>
+              <div class="dash-change">↑ 1601%</div>
+            </div>
+          </div>
+          <div class="dash-bottom">
+            <div class="dash-bottom-item">
+              <div class="dash-bottom-label">Flows</div>
+              <div class="dash-bottom-value">ZAR 29,324</div>
+            </div>
+            <div class="dash-bottom-item">
+              <div class="dash-bottom-label">Email</div>
+              <div class="dash-bottom-value">100%</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

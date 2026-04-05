@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcomPulse — Ad Creatives</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #0a0a0a;
+    color: white;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    padding: 40px;
+  }
+  h1 {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .sub {
+    color: #777;
+    font-size: 15px;
+    margin-bottom: 40px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+    transition: border-color 0.2s;
+  }
+  .card:hover { border-color: #c4622d; }
+  .card h3 { font-size: 16px; margin-bottom: 4px; }
+  .card .meta { font-size: 13px; color: #666; margin-bottom: 12px; }
+  .card .angle { font-size: 13px; color: #c4622d; }
+  .card .dims {
+    display: inline-block;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 6px;
+    padding: 2px 8px;
+    font-size: 11px;
+    color: #888;
+    margin-top: 8px;
+  }
+  .instructions {
+    margin-top: 48px;
+    padding: 24px;
+    background: #111;
+    border: 1px solid #222;
+    border-radius: 12px;
+  }
+  .instructions h2 { font-size: 18px; margin-bottom: 12px; }
+  .instructions ol { padding-left: 20px; }
+  .instructions li { color: #999; font-size: 14px; margin-bottom: 8px; line-height: 1.5; }
+  .instructions code { background: #1a1a1a; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #c4622d; }
+</style>
+</head>
+<body>
+  <h1>EcomPulse Ad Creatives</h1>
+  <p class="sub">Click any card to open the creative. Take a screenshot at the specified dimensions.</p>
+
+  <div class="grid">
+    <a href="01-pain-square.html" class="card">
+      <h3>01 — Pain Point</h3>
+      <div class="meta">Traffic that never converts</div>
+      <div class="angle">Angle: Pain / Problem awareness</div>
+      <div class="dims">1080 × 1080 (Square — Feed)</div>
+    </a>
+
+    <a href="02-results-square.html" class="card">
+      <h3>02 — Real Results</h3>
+      <div class="meta">ZAR 29,324 in 7 days (dashboard)</div>
+      <div class="angle">Angle: Data / Proof</div>
+      <div class="dims">1080 × 1080 (Square — Feed)</div>
+    </a>
+
+    <a href="03-comparison-square.html" class="card">
+      <h3>03 — Price Comparison</h3>
+      <div class="meta">Agency $3K/mo vs EcomPulse $360 once</div>
+      <div class="angle">Angle: Value / Comparison</div>
+      <div class="dims">1080 × 1080 (Square — Feed)</div>
+    </a>
+
+    <a href="04-socialproof-portrait.html" class="card">
+      <h3>04 — Social Proof</h3>
+      <div class="meta">500+ stores, testimonials, stats</div>
+      <div class="angle">Angle: Trust / Social proof</div>
+      <div class="dims">1080 × 1350 (Portrait — Feed/Stories)</div>
+    </a>
+
+    <a href="05-urgency-square.html" class="card">
+      <h3>05 — Urgency</h3>
+      <div class="meta">Your store is leaking money right now</div>
+      <div class="angle">Angle: Urgency / FOMO</div>
+      <div class="dims">1080 × 1080 (Square — Feed)</div>
+    </a>
+
+    <a href="06-offer-portrait.html" class="card">
+      <h3>06 — 10% Off Offer</h3>
+      <div class="meta">All 3 plans with pricing breakdown</div>
+      <div class="angle">Angle: Offer / Discount</div>
+      <div class="dims">1080 × 1350 (Portrait — Feed/Stories)</div>
+    </a>
+
+    <a href="07-results-landscape.html" class="card">
+      <h3>07 — Results + Dashboard</h3>
+      <div class="meta">Dashboard proof with stats (link ad)</div>
+      <div class="angle">Angle: Data / Proof</div>
+      <div class="dims">1200 × 628 (Landscape — Link Ads)</div>
+    </a>
+  </div>
+
+  <div class="instructions">
+    <h2>How to export as images</h2>
+    <ol>
+      <li>Open the creative in Chrome</li>
+      <li>Open DevTools (<code>Cmd + Option + I</code>)</li>
+      <li>Click the device toolbar (<code>Cmd + Shift + M</code>)</li>
+      <li>Set the dimensions to match the creative (e.g., 1080 × 1080)</li>
+      <li>Set device pixel ratio to <code>2</code> for retina quality</li>
+      <li>Right-click → <code>Capture screenshot</code> (three dots menu in device toolbar)</li>
+      <li>Upload the PNG directly to Meta Ads Manager</li>
+    </ol>
+  </div>
+</body>
+</html>
