@@ -214,8 +214,8 @@ const Hero = React.memo(() => {
         }
       >
         <Image
-          src="/dashboard.png"
-          alt="EcomPulse Dashboard — A$1,354,591.40 total revenue"
+          src="/dashboard-new.jpg"
+          alt="EcomPulse Dashboard — ZAR 122,185.15 total revenue, 150% vs previous period"
           width={1200}
           height={750}
           className="mx-auto rounded-2xl object-cover h-full object-left-top w-full"

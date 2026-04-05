@@ -389,7 +389,7 @@ export default function OfferPage() {
             <div className="mt-14 sm:mt-18 max-w-5xl mx-auto px-5 sm:px-8 lg:px-12">
               <div className="dashboard-image-wrapper">
                 <Image
-                  src="/dashboard.png"
+                  src="/dashboard-new.jpg"
                   alt="EcomPulse Dashboard"
                   width={1200}
                   height={750}
