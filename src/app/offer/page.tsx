@@ -328,7 +328,7 @@ export default function OfferPage() {
 
         <main>
           {/* ─── Hero ─── */}
-          <section className="relative pt-28 sm:pt-36 lg:pt-44 pb-16 sm:pb-20 overflow-hidden">
+          <section className="relative pt-20 sm:pt-28 md:pt-36 lg:pt-44 pb-12 sm:pb-16 md:pb-20 overflow-hidden">
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
@@ -341,7 +341,7 @@ export default function OfferPage() {
               <OfferBadge />
 
               <h1
-                className="font-display text-4xl md:text-5xl lg:text-[56px] font-bold leading-[1.08] tracking-tight"
+                className="font-display text-[26px] sm:text-4xl md:text-5xl lg:text-[56px] font-bold leading-[1.1] tracking-tight"
                 style={{
                   background:
                     "linear-gradient(to bottom, #ffffff, #ffffff, rgba(255, 255, 255, 0.6))",
@@ -371,7 +371,7 @@ export default function OfferPage() {
                 retainers. Today only: <strong className="text-white">10% off every plan.</strong>
               </p>
 
-              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
                 <button
                   onClick={scrollToPricing}
                   className="btn-primary w-full sm:w-auto justify-center cursor-pointer"
@@ -379,7 +379,7 @@ export default function OfferPage() {
                   Claim Your Discount
                   <ArrowRight size={14} />
                 </button>
-                <span className="text-sm text-[#555]">
+                <span className="text-[13px] sm:text-sm text-[#555]">
                   No monthly fees. Ever.
                 </span>
               </div>
@@ -417,9 +417,9 @@ export default function OfferPage() {
           </section>
 
           {/* ─── Why email beats more ad spend ─── */}
-          <section className="py-16 sm:py-20 px-5 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-            <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold">
+          <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
+              <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
                 You&apos;re already paying for the traffic.{" "}
                 <span className="text-[#c4622d]">Stop wasting it.</span>
               </h2>

@@ -381,3 +381,52 @@ body {
   from { background-position: 0% 0%; }
   to { background-position: 0% -1000%; }
 }
+
+/* ─── Mobile optimizations ─── */
+@media (max-width: 640px) {
+  .btn-primary {
+    padding: 12px 24px;
+    font-size: 13px;
+    min-height: 44px;
+  }
+
+  .btn-ghost {
+    padding: 12px 24px;
+    font-size: 13px;
+    min-height: 44px;
+  }
+
+  .step-card {
+    padding: 24px 20px;
+  }
+
+  .pricing-card,
+  .pricing-card-featured {
+    border-radius: 16px;
+  }
+
+  .cta-elevated {
+    border-radius: 16px;
+  }
+
+  .stat-number {
+    font-size: 28px;
+  }
+
+  .faq-item {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+/* ─── Touch-friendly tap targets ─── */
+@media (pointer: coarse) {
+  a, button {
+    min-height: 44px;
+  }
+}
+
+/* ─── Prevent horizontal overflow on mobile ─── */
+html, body {
+  overflow-x: hidden;
+}

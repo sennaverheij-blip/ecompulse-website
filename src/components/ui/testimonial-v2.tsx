@@ -103,7 +103,7 @@ const TestimonialsColumn = (props: {
                   y: -8,
                   transition: { type: "spring", stiffness: 400, damping: 17 },
                 }}
-                className="p-8 rounded-2xl border border-white/[0.08] max-w-xs w-full bg-[#0c0c0c] transition-all duration-300 cursor-default select-none group focus:outline-none focus:ring-2 focus:ring-[#c4622d]/30"
+                className="p-5 sm:p-8 rounded-2xl border border-white/[0.08] max-w-xs w-full bg-[#0c0c0c] transition-all duration-300 cursor-default select-none group focus:outline-none focus:ring-2 focus:ring-[#c4622d]/30"
                 style={{
                   boxShadow:
                     "0 4px 12px rgba(0,0,0,0.5), 0 12px 36px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.05)",
@@ -145,7 +145,7 @@ export default function TestimonialsV2() {
   return (
     <section
       aria-labelledby="testimonials-heading"
-      className="py-24 relative overflow-hidden"
+      className="py-14 sm:py-20 md:py-24 relative overflow-hidden"
     >
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -158,7 +158,7 @@ export default function TestimonialsV2() {
         }}
         className="max-w-7xl px-4 z-10 mx-auto"
       >
-        <div className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-16">
+        <div className="flex flex-col items-center justify-center max-w-[540px] mx-auto mb-10 sm:mb-16 px-4">
           <div className="flex justify-center">
             <div className="border border-white/[0.08] py-1 px-4 rounded-full text-xs font-semibold tracking-wide uppercase text-[#999] bg-white/[0.04]">
               Testimonials
@@ -167,7 +167,7 @@ export default function TestimonialsV2() {
 
           <h2
             id="testimonials-heading"
-            className="font-display text-4xl md:text-5xl font-bold tracking-tight mt-6 text-center text-white"
+            className="font-display text-2xl sm:text-4xl md:text-5xl font-bold tracking-tight mt-6 text-center text-white"
           >
             Trusted by{" "}
             <span className="font-accent text-[#c4622d]">500+ stores</span>
@@ -179,7 +179,7 @@ export default function TestimonialsV2() {
         </div>
 
         <div
-          className="flex justify-center gap-6 mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] max-h-[740px] overflow-hidden"
+          className="flex justify-center gap-4 sm:gap-6 mt-6 sm:mt-10 [mask-image:linear-gradient(to_bottom,transparent,black_10%,black_90%,transparent)] max-h-[500px] sm:max-h-[740px] overflow-hidden px-4 sm:px-0"
           role="region"
           aria-label="Scrolling Testimonials"
         >

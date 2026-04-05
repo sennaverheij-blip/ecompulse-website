@@ -143,7 +143,7 @@ const Hero = React.memo(() => {
 
       <ContainerScroll
         titleComponent={
-          <div className="flex flex-col items-center pt-24 sm:pt-28 pb-8 md:pb-12">
+          <div className="flex flex-col items-center pt-20 sm:pt-24 md:pt-28 pb-4 sm:pb-8 md:pb-12 px-4 sm:px-0">
             <aside className="mb-8 inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm max-w-full">
               <span className="w-2 h-2 rounded-full bg-[#c4622d] animate-pulse" />
               <span className="text-xs text-[#999] text-center whitespace-nowrap">
@@ -160,7 +160,7 @@ const Hero = React.memo(() => {
             </aside>
 
             <h1
-              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-center max-w-3xl px-6 leading-tight mb-6"
+              className="font-display text-[28px] sm:text-4xl md:text-5xl lg:text-6xl font-bold text-center max-w-3xl px-2 sm:px-6 leading-[1.1] mb-4 sm:mb-6"
               style={{
                 background: "linear-gradient(to bottom, #ffffff, #ffffff, rgba(255, 255, 255, 0.6))",
                 WebkitBackgroundClip: "text",
@@ -183,20 +183,20 @@ const Hero = React.memo(() => {
               </span>
             </h1>
 
-            <p className="text-sm md:text-base text-center max-w-2xl px-6 mb-10 text-[#777] leading-relaxed">
+            <p className="text-[13px] sm:text-sm md:text-base text-center max-w-2xl px-2 sm:px-6 mb-6 sm:mb-10 text-[#777] leading-relaxed">
               Done-for-you Klaviyo flows that recover abandoned carts,
               win back churning customers, and turn one-time buyers into repeat revenue.
               <br />
               One-time setup, no retainers.
             </p>
 
-            <div className="flex items-center gap-4 relative z-10">
-              <Link href="/pricing">
+            <div className="flex flex-col sm:flex-row items-center gap-3 sm:gap-4 relative z-10 w-full sm:w-auto">
+              <Link href="/pricing" className="w-full sm:w-auto">
                 <Button
                   type="button"
                   variant="gradient"
                   size="lg"
-                  className="rounded-full flex items-center justify-center"
+                  className="rounded-full flex items-center justify-center w-full sm:w-auto"
                   aria-label="Get your flows built"
                 >
                   Get My Flows Built
