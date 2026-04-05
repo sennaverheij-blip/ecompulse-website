@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import { GlassEffect, GlassFilter } from "./ui/liquid-glass";
 
 const steps = [
   {
@@ -21,6 +22,7 @@ const steps = [
 export default function HowItWorks() {
   return (
     <section className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+      <GlassFilter />
       <ScrollReveal>
         <h2 className="font-display text-[var(--text-h1)] font-bold text-center">
           How It Works
@@ -33,19 +35,21 @@ export default function HowItWorks() {
       <div className="mt-10 sm:mt-16 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         {steps.map((step, i) => (
           <ScrollReveal key={step.number} delay={i * 0.1}>
-            <div className="step-card text-center">
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-[#c4622d] flex items-center justify-center mx-auto mb-5 sm:mb-6 shadow-[0_0_20px_rgba(196,98,45,0.15)]">
-                <span className="font-display text-xl sm:text-2xl font-bold text-[#c4622d]">
-                  {step.number}
-                </span>
+            <GlassEffect className="rounded-2xl h-full">
+              <div className="step-card text-center border-0 bg-transparent shadow-none">
+                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full border border-[#c4622d] flex items-center justify-center mx-auto mb-5 sm:mb-6 shadow-[0_0_20px_rgba(196,98,45,0.15)]">
+                  <span className="font-display text-xl sm:text-2xl font-bold text-[#c4622d]">
+                    {step.number}
+                  </span>
+                </div>
+                <h3 className="font-display text-base sm:text-[var(--text-h3)] font-semibold mb-2 sm:mb-3 text-white">
+                  {step.title}
+                </h3>
+                <p className="text-[13px] sm:text-sm text-[#6b6b6b] leading-relaxed max-w-xs mx-auto">
+                  {step.description}
+                </p>
               </div>
-              <h3 className="font-display text-base sm:text-[var(--text-h3)] font-semibold mb-2 sm:mb-3">
-                {step.title}
-              </h3>
-              <p className="text-[13px] sm:text-sm text-[#6b6b6b] leading-relaxed max-w-xs mx-auto">
-                {step.description}
-              </p>
-            </div>
+            </GlassEffect>
           </ScrollReveal>
         ))}
       </div>
