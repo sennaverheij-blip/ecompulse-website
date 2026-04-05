@@ -10,7 +10,7 @@ const plans = [
     emailCount: "7",
     variant: "default" as const,
     audience: "Perfect for stores just getting started with email",
-    stripeUrl: "https://buy.stripe.com/3cIcMZ5o0cLvdxq0Q7fnO00",
+    stripeUrl: "https://buy.stripe.com/00w8wJ7w89zjale9mDfnO09",
     features: [
       { text: "Welcome series" },
       { text: "Abandoned checkout" },
@@ -25,7 +25,7 @@ const plans = [
     emailCount: "13",
     variant: "plus" as const,
     audience: "Best for growing stores ready to scale LTV",
-    stripeUrl: "https://buy.stripe.com/7sYfZb17K12NgJC42jfnO01",
+    stripeUrl: "https://buy.stripe.com/4gMfZb2bO26RgJC6arfnO0a",
     features: [
       { text: "All Pulse features" },
       { text: "Customer win-back" },
@@ -40,7 +40,7 @@ const plans = [
     emailCount: "25",
     variant: "x" as const,
     audience: "For 6-figure+ stores maximizing every dollar",
-    stripeUrl: "https://buy.stripe.com/6oUdR3cQsbHrdxq2YffnO02",
+    stripeUrl: "https://buy.stripe.com/fZu4gtbMo4eZ0KE7evfnO0b",
     features: [
       { text: "All Pulse+ features" },
       { text: "Site abandoned" },
