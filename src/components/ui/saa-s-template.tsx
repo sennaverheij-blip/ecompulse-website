@@ -143,7 +143,7 @@ const Hero = React.memo(() => {
 
       <ContainerScroll
         titleComponent={
-          <div className="flex flex-col items-center pt-16 sm:pt-20">
+          <div className="flex flex-col items-center pt-24 sm:pt-28 pb-8 md:pb-12">
             <aside className="mb-8 inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm max-w-full">
               <span className="w-2 h-2 rounded-full bg-[#c4622d] animate-pulse" />
               <span className="text-xs text-[#999] text-center whitespace-nowrap">
