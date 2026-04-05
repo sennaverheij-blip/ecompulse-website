@@ -4,6 +4,7 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowRight, Menu, X } from "lucide-react";
+import { ContainerScroll } from "./container-scroll-animation";
 
 // Inline Button Component
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -126,7 +127,7 @@ Navigation.displayName = "Navigation";
 const Hero = React.memo(() => {
   return (
     <section
-      className="relative min-h-screen flex flex-col items-center justify-start px-6 pt-28 sm:pt-36 lg:pt-44"
+      className="relative flex flex-col overflow-hidden"
       style={{ animation: "fadeIn 0.6s ease-out" }}
     >
       <style>{`
@@ -140,101 +141,88 @@ const Hero = React.memo(() => {
         }
       `}</style>
 
-      <aside className="mb-8 inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm max-w-full">
-        <span className="w-2 h-2 rounded-full bg-[#c4622d] animate-pulse" />
-        <span className="text-xs text-[#999] text-center whitespace-nowrap">
-          Flows go live in <span className="text-[#c4622d] font-medium">5-7 days</span>
-        </span>
-        <Link
-          href="/pricing"
-          className="flex items-center gap-1 text-xs text-[#999] hover:text-white transition-all active:scale-95 whitespace-nowrap"
-          aria-label="View pricing"
-        >
-          View plans
-          <ArrowRight size={12} />
-        </Link>
-      </aside>
+      <ContainerScroll
+        titleComponent={
+          <div className="flex flex-col items-center pt-16 sm:pt-20">
+            <aside className="mb-8 inline-flex flex-wrap items-center justify-center gap-2 px-4 py-2 rounded-full border border-white/[0.08] bg-white/[0.04] backdrop-blur-sm max-w-full">
+              <span className="w-2 h-2 rounded-full bg-[#c4622d] animate-pulse" />
+              <span className="text-xs text-[#999] text-center whitespace-nowrap">
+                Flows go live in <span className="text-[#c4622d] font-medium">5-7 days</span>
+              </span>
+              <Link
+                href="/pricing"
+                className="flex items-center gap-1 text-xs text-[#999] hover:text-white transition-all active:scale-95 whitespace-nowrap"
+                aria-label="View pricing"
+              >
+                View plans
+                <ArrowRight size={12} />
+              </Link>
+            </aside>
 
-      <h1
-        className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-center max-w-3xl px-6 leading-tight mb-6"
-        style={{
-          background: "linear-gradient(to bottom, #ffffff, #ffffff, rgba(255, 255, 255, 0.6))",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-          backgroundClip: "text",
-          letterSpacing: "-0.03em",
-        }}
-      >
-        Stop losing revenue to{" "}
-        <span
-          className="font-accent"
-          style={{
-            background: "linear-gradient(to bottom, #c4622d, rgba(196, 98, 45, 0.7))",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
-          }}
-        >
-          broken email flows
-        </span>
-      </h1>
+            <h1
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-center max-w-3xl px-6 leading-tight mb-6"
+              style={{
+                background: "linear-gradient(to bottom, #ffffff, #ffffff, rgba(255, 255, 255, 0.6))",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                letterSpacing: "-0.03em",
+              }}
+            >
+              Stop losing revenue to{" "}
+              <span
+                className="font-accent"
+                style={{
+                  background: "linear-gradient(to bottom, #c4622d, rgba(196, 98, 45, 0.7))",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                broken email flows
+              </span>
+            </h1>
 
-      <p className="text-sm md:text-base text-center max-w-2xl px-6 mb-10 text-[#777] leading-relaxed">
-        Done-for-you Klaviyo flows that recover abandoned carts,
-        win back churning customers, and turn one-time buyers into repeat revenue.
-        <br />
-        One-time setup, no retainers.
-      </p>
+            <p className="text-sm md:text-base text-center max-w-2xl px-6 mb-10 text-[#777] leading-relaxed">
+              Done-for-you Klaviyo flows that recover abandoned carts,
+              win back churning customers, and turn one-time buyers into repeat revenue.
+              <br />
+              One-time setup, no retainers.
+            </p>
 
-      <div className="flex items-center gap-4 relative z-10 mb-16">
-        <Link href="/pricing">
-          <Button
-            type="button"
-            variant="gradient"
-            size="lg"
-            className="rounded-full flex items-center justify-center"
-            aria-label="Get your flows built"
-          >
-            Get My Flows Built
-            <ArrowRight size={16} />
-          </Button>
-        </Link>
-        <Link
-          href="#how-it-works"
-          className="text-sm text-[#666] hover:text-white transition-colors py-2.5"
-        >
-          See how it works
-        </Link>
-      </div>
-
-      <div className="w-full max-w-5xl relative pb-20">
-        {/* Glow effect */}
-        <div
-          className="absolute left-1/2 w-[90%] pointer-events-none z-0"
-          style={{ top: "-23%", transform: "translateX(-50%)" }}
-          aria-hidden="true"
-        >
-          <div
-            className="w-full aspect-[2/1]"
-            style={{
-              background: "radial-gradient(ellipse 70% 50% at 50% 60%, rgba(196, 98, 45, 0.15) 0%, transparent 70%)",
-            }}
-          />
-        </div>
-
-        <div className="relative z-10">
-          <div className="dashboard-image-wrapper">
-            <Image
-              src="/dashboard.png"
-              alt="EcomPulse Dashboard — A$1,354,591.40 total revenue"
-              width={1200}
-              height={750}
-              className="w-full h-auto"
-              priority
-            />
+            <div className="flex items-center gap-4 relative z-10">
+              <Link href="/pricing">
+                <Button
+                  type="button"
+                  variant="gradient"
+                  size="lg"
+                  className="rounded-full flex items-center justify-center"
+                  aria-label="Get your flows built"
+                >
+                  Get My Flows Built
+                  <ArrowRight size={16} />
+                </Button>
+              </Link>
+              <Link
+                href="#how-it-works"
+                className="text-sm text-[#666] hover:text-white transition-colors py-2.5"
+              >
+                See how it works
+              </Link>
+            </div>
           </div>
-        </div>
-      </div>
+        }
+      >
+        <Image
+          src="/dashboard.png"
+          alt="EcomPulse Dashboard — A$1,354,591.40 total revenue"
+          width={1200}
+          height={750}
+          className="mx-auto rounded-2xl object-cover h-full object-left-top w-full"
+          priority
+          draggable={false}
+        />
+      </ContainerScroll>
     </section>
   );
 });
