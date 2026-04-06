@@ -1,5 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
+import GoldenEgg from "./GoldenEgg";
 
 const footerLinks = {
   Pages: [
@@ -42,15 +45,7 @@ export default function Footer() {
       <div className="mt-16 pt-8 border-t border-white/[0.04] flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-xs text-[#444]">
           Copyright &copy; 2025 EcomPulseMarketing LLC. All rights reserved
-          <a
-            href="https://wa.me/31683355115?text=I%20have%20found%20the%20golden%20egg%20and%20I%20am%20here%20to%20redeem%20my%2030%25%20off%20on%20ecompulse%20flows!%20Let's%20get%20started."
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block ml-1 text-[8px] opacity-20 hover:opacity-100 hover:text-[10px] transition-all duration-300 cursor-default hover:cursor-pointer grayscale hover:grayscale-0"
-            title=""
-          >
-            🥚
-          </a>
+          <GoldenEgg id="footer" size="text-[8px]" className="ml-0.5" />
         </p>
       </div>
     </footer>

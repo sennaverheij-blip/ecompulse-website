@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
+import GoldenEgg from "./GoldenEgg";
 
 const faqs = [
   {
@@ -46,7 +47,7 @@ export default function FAQ() {
           Everything You Need to Know
         </h2>
         <p className="mt-3 sm:mt-4 text-center text-[#6b6b6b] text-[15px] sm:text-base">
-          Common questions about EcomPulse.
+          Common questions about EcomPulse. <GoldenEgg id="faq" size="text-[9px]" />
         </p>
       </ScrollReveal>
 

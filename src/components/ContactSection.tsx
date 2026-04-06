@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import ScrollReveal from "./ScrollReveal";
+import GoldenEgg from "./GoldenEgg";
 
 export default function ContactSection() {
   const [email, setEmail] = useState("");
@@ -23,7 +24,7 @@ export default function ContactSection() {
             Get in Touch
           </h2>
           <p className="mt-3 sm:mt-4 text-[#6b6b6b] text-[15px] sm:text-base leading-relaxed">
-            Questions? Want to see if EcomPulse is right for your store?
+            Questions? Want to see if EcomPulse is right for your store? <GoldenEgg id="contact" size="text-[9px]" />
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">

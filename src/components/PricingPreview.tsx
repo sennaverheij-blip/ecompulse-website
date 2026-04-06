@@ -1,6 +1,7 @@
 import Link from "next/link";
 import PricingCard from "./PricingCard";
 import ScrollReveal from "./ScrollReveal";
+import GoldenEgg from "./GoldenEgg";
 
 const plans = [
   {
@@ -76,7 +77,7 @@ export default function PricingPreview() {
         <div className="mt-8 sm:mt-10 text-center bg-white/[0.02] border border-white/[0.05] rounded-xl px-5 py-4 max-w-lg mx-auto">
           <p className="text-sm text-[#999]">
             <span className="text-[#c4622d] font-medium">Results-backed guarantee.</span>{" "}
-            Not happy? We&apos;ll revise until you are.
+            Not happy? We&apos;ll revise until you are. <GoldenEgg id="pricing" size="text-[9px]" />
           </p>
         </div>
       </ScrollReveal>

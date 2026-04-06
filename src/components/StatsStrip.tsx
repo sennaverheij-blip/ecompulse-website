@@ -2,6 +2,7 @@
 
 import CountUp from "./CountUp";
 import ScrollReveal from "./ScrollReveal";
+import GoldenEgg from "./GoldenEgg";
 
 const stats = [
   { value: 500, suffix: "+", label: "Stores live" },
@@ -30,7 +31,7 @@ export default function StatsStrip() {
                     />
                   )}
                 </div>
-                <p className="mt-2 text-[13px] text-[#555]">{stat.label}</p>
+                <p className="mt-2 text-[13px] text-[#555]">{stat.label}{i === 3 && <> <GoldenEgg id="stats" size="text-[9px]" /></>}</p>
               </div>
             </ScrollReveal>
           ))}

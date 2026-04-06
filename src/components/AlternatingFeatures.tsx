@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import GoldenEgg from "./GoldenEgg";
 
 const features = [
   {
@@ -48,7 +49,7 @@ export default function AlternatingFeatures() {
     <section className="py-20 sm:py-24 lg:py-32 px-5 sm:px-6 lg:px-8 max-w-6xl mx-auto">
       <ScrollReveal>
         <h2 className="font-display text-[var(--text-h1)] font-bold text-center mb-14 sm:mb-20">
-          Built to Recover Revenue You&apos;re Already Losing
+          Built to Recover Revenue You&apos;re Already Losing <GoldenEgg id="features" size="text-[10px]" />
         </h2>
       </ScrollReveal>
 

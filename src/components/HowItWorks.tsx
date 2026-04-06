@@ -1,5 +1,6 @@
 import ScrollReveal from "./ScrollReveal";
 import { GlassEffect, GlassFilter } from "./ui/liquid-glass";
+import GoldenEgg from "./GoldenEgg";
 
 const steps = [
   {
@@ -28,7 +29,7 @@ export default function HowItWorks() {
           How It Works
         </h2>
         <p className="mt-3 sm:mt-4 text-center text-[#6b6b6b] text-[15px] sm:text-base max-w-lg mx-auto">
-          Three steps. Five minutes of your time. Revenue on autopilot.
+          Three steps. Five minutes of your time. Revenue on autopilot. <GoldenEgg id="howitworks" size="text-[9px]" />
         </p>
       </ScrollReveal>
 

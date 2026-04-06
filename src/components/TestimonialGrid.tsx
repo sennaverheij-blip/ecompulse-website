@@ -1,4 +1,5 @@
 import ScrollReveal from "./ScrollReveal";
+import GoldenEgg from "./GoldenEgg";
 
 const heroTestimonial = {
   name: "Sarah K.",
@@ -50,7 +51,7 @@ export default function TestimonialGrid() {
           Trusted by Leading eCommerce Brands
         </h2>
         <p className="text-[#6b6b6b] text-[15px] sm:text-base mb-10 sm:mb-16 max-w-lg">
-          Real results from real stores. Here&apos;s what our clients say.
+          Real results from real stores. Here&apos;s what our clients say. <GoldenEgg id="testimonials" size="text-[9px]" />
         </p>
       </ScrollReveal>
 
