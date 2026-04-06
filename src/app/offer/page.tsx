@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Check, ChevronDown, Clock, Shield, Zap } from "lucide-react";
 import { GlassEffect, GlassFilter } from "@/components/ui/liquid-glass";
-import MetaPixel, { trackEvent } from "@/components/MetaPixel";
+import { trackEvent } from "@/components/MetaPixel";
 
 /* ─── Pricing (10% off) ─── */
 const plans = [
@@ -301,7 +301,6 @@ export default function OfferPage() {
 
   return (
     <>
-      <MetaPixel />
       <GlassFilter />
 
       <div className="relative min-h-screen bg-[#050505] text-white">

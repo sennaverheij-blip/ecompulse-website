@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import MetaPixel from "@/components/MetaPixel";
 
 const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
@@ -63,7 +64,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${playfair.variable} antialiased`}>
-      <body className="min-h-screen font-body">{children}</body>
+      <body className="min-h-screen font-body">
+        <MetaPixel />
+        {children}
+      </body>
     </html>
   );
 }
