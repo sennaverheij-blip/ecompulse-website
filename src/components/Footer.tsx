@@ -46,10 +46,10 @@ export default function Footer() {
             href="https://wa.me/31683355115?text=I%20have%20found%20the%20golden%20egg%20and%20I%20am%20here%20to%20redeem%20my%2030%25%20off%20on%20ecompulse%20flows!%20Let's%20get%20started."
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-block ml-0.5 text-[#444] hover:text-yellow-400 transition-colors duration-300 cursor-default hover:cursor-pointer"
+            className="inline-block ml-1 text-[8px] opacity-20 hover:opacity-100 hover:text-[10px] transition-all duration-300 cursor-default hover:cursor-pointer grayscale hover:grayscale-0"
             title=""
           >
-            .
+            🥚
           </a>
         </p>
       </div>
