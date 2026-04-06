@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, DM_Sans, Playfair_Display } from "next/font/google";
 import "./globals.css";
+import { Analytics } from "@vercel/analytics/next";
 import MetaPixel from "@/components/MetaPixel";
 
 const spaceGrotesk = Space_Grotesk({
@@ -66,6 +67,7 @@ export default function RootLayout({
     <html lang="en" className={`${spaceGrotesk.variable} ${dmSans.variable} ${playfair.variable} antialiased`}>
       <body className="min-h-screen font-body">
         <MetaPixel />
+        <Analytics />
         {children}
       </body>
     </html>
