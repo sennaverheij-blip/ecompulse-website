@@ -17,7 +17,7 @@ const plans = [
     emailCount: "7",
     variant: "default" as const,
     audience: "Perfect for stores just getting started with email",
-    stripeUrl: "https://buy.stripe.com/bJe8wJ2bO7rbbpidCTfnO0f",
+    stripeUrl: "https://wa.me/31617637046?text=Hi%2C%20I%27m%20interested%20in%20the%20Pulse%20plan%20(10%25%20off).%20Can%20I%20get%20more%20info%3F",
     features: [
       "Welcome series",
       "Abandoned checkout",
@@ -33,7 +33,7 @@ const plans = [
     emailCount: "13",
     variant: "plus" as const,
     audience: "Best for growing stores ready to scale LTV",
-    stripeUrl: "https://buy.stripe.com/7sYeV703Gh1L50U56nfnO0h",
+    stripeUrl: "https://wa.me/31617637046?text=Hi%2C%20I%27m%20interested%20in%20the%20Pulse%2B%20plan%20(10%25%20off).%20Can%20I%20get%20more%20info%3F",
     features: [
       "All Pulse features",
       "Customer win-back",
@@ -49,7 +49,7 @@ const plans = [
     emailCount: "25",
     variant: "x" as const,
     audience: "For 6-figure+ stores maximizing every dollar",
-    stripeUrl: "https://buy.stripe.com/6oU6oB2bOfXH7921UbfnO0g",
+    stripeUrl: "https://wa.me/31617637046?text=Hi%2C%20I%27m%20interested%20in%20the%20PulseX%20plan%20(10%25%20off).%20Can%20I%20get%20more%20info%3F",
     features: [
       "All Pulse+ features",
       "Site abandoned",
@@ -200,7 +200,7 @@ function OfferPricingCard({
                 : "border border-[#333] text-white hover:bg-white/5 hover:-translate-y-px"
             }`}
           >
-            Claim {plan.name} — ${plan.price}
+            More Info — {plan.name}
           </a>
           <p className="text-[10px] text-center text-[#555]">
             Save ${plan.originalPrice - plan.price} with this offer
