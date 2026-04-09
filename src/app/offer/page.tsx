@@ -3,59 +3,72 @@
 import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Check, ChevronDown, Clock, Shield, Zap } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  ChevronDown,
+  MessageCircle,
+  TrendingUp,
+  Mail,
+  DollarSign,
+  Users,
+  BarChart3,
+  ShoppingCart,
+  RefreshCw,
+  Eye,
+  X,
+} from "lucide-react";
 import { GlassEffect, GlassFilter } from "@/components/ui/liquid-glass";
 import { trackEvent } from "@/components/MetaPixel";
 
-/* ─── Pricing (10% off) ─── */
-const plans = [
+const WHATSAPP_URL =
+  "https://wa.me/31617637046?text=Hi%2C%20I%27d%20like%20to%20get%20my%20Klaviyo%20flows%20set%20up.%20Can%20you%20tell%20me%20more%3F";
+
+/* ─── Fake Klaviyo dashboard data ─── */
+const revenueData = [
+  { month: "Jan", before: 1200, after: 1200 },
+  { month: "Feb", before: 1350, after: 1800 },
+  { month: "Mar", before: 1100, after: 2400 },
+  { month: "Apr", before: 1400, after: 3100 },
+  { month: "May", before: 1250, after: 3800 },
+  { month: "Jun", before: 1300, after: 4200 },
+];
+
+const flowMetrics = [
   {
-    name: "Pulse",
-    originalPrice: 400,
-    price: 360,
-    flowCount: "3",
-    emailCount: "7",
-    variant: "default" as const,
-    audience: "Perfect for stores just getting started with email",
-    stripeUrl: "https://wa.me/31617637046?text=Hi%2C%20I%27m%20interested%20in%20the%20Pulse%20plan%20(10%25%20off).%20Can%20I%20get%20more%20info%3F",
-    features: [
-      "Welcome series",
-      "Abandoned checkout",
-      "Browse abandoned",
-      "Live in 5-7 days",
-    ],
+    name: "Welcome Series",
+    openRate: "67.2%",
+    clickRate: "24.8%",
+    revenue: "$4,280",
+    status: "Live",
   },
   {
-    name: "Pulse+",
-    originalPrice: 650,
-    price: 585,
-    flowCount: "5",
-    emailCount: "13",
-    variant: "plus" as const,
-    audience: "Best for growing stores ready to scale LTV",
-    stripeUrl: "https://wa.me/31617637046?text=Hi%2C%20I%27m%20interested%20in%20the%20Pulse%2B%20plan%20(10%25%20off).%20Can%20I%20get%20more%20info%3F",
-    features: [
-      "All Pulse features",
-      "Customer win-back",
-      "Post purchase upsell",
-      "LTV & repeat purchase optimization",
-    ],
+    name: "Abandoned Cart",
+    openRate: "58.4%",
+    clickRate: "19.2%",
+    revenue: "$8,640",
+    status: "Live",
   },
   {
-    name: "PulseX",
-    originalPrice: 880,
-    price: 792,
-    flowCount: "10",
-    emailCount: "25",
-    variant: "x" as const,
-    audience: "For 6-figure+ stores maximizing every dollar",
-    stripeUrl: "https://wa.me/31617637046?text=Hi%2C%20I%27m%20interested%20in%20the%20PulseX%20plan%20(10%25%20off).%20Can%20I%20get%20more%20info%3F",
-    features: [
-      "All Pulse+ features",
-      "Site abandoned",
-      "Flash sale sequence",
-      "Tracking panel (Rush/Parcel/other)",
-    ],
+    name: "Browse Abandon",
+    openRate: "44.1%",
+    clickRate: "12.6%",
+    revenue: "$2,190",
+    status: "Live",
+  },
+  {
+    name: "Post-Purchase",
+    openRate: "72.3%",
+    clickRate: "28.1%",
+    revenue: "$3,410",
+    status: "Live",
+  },
+  {
+    name: "Win-Back",
+    openRate: "38.7%",
+    clickRate: "11.4%",
+    revenue: "$1,860",
+    status: "Live",
   },
 ];
 
@@ -63,7 +76,7 @@ const faqs = [
   {
     question: "How quickly will I see results?",
     answer:
-      "Most stores see measurable revenue from email within the first 2 weeks of flows going live. Setup takes 5-7 days, so you could be generating extra revenue within 3 weeks of signing up.",
+      "Most stores see measurable revenue from email within the first 2 weeks of flows going live. Setup takes 5-7 days, so you could be generating extra revenue within 3 weeks.",
   },
   {
     question: "Is this really a one-time payment?",
@@ -76,138 +89,303 @@ const faqs = [
       "We'll audit what you have, keep what's working, and replace or add what's missing. Most stores are leaving 15-30% of email revenue on the table even with existing flows.",
   },
   {
-    question: "How is this different from hiring a freelancer or agency?",
+    question: "Do I need a Klaviyo account?",
     answer:
-      "Agencies charge $2-5K/month on retainer. Freelancers are inconsistent. We deliver battle-tested flows backed by data from 500+ stores, at a fraction of the cost, with zero ongoing fees.",
+      "Yes, you need an active Klaviyo account. If you don't have one yet, we'll help you get set up — Klaviyo has a free tier for up to 250 contacts.",
   },
   {
     question: "What if I'm not satisfied?",
     answer:
-      "We offer a results-backed guarantee. If you're not happy with the flows we deliver, we'll revise them until you are. Our reputation depends on your success.",
+      "We offer a results-backed guarantee. If you're not happy with the flows we deliver, we'll revise them until you are.",
   },
-];
-
-const socialProof = [
-  { metric: "500+", label: "Stores using EcomPulse" },
-  { metric: "20-25%", label: "Avg. revenue uplift" },
-  { metric: "$0", label: "Monthly retainer" },
-  { metric: "5-7 days", label: "To go live" },
 ];
 
 /* ─── Components ─── */
 
-function OfferBadge() {
+function KlaviyoPartnerBadge() {
   return (
-    <div className="inline-flex items-center gap-2 bg-[#c4622d]/10 border border-[#c4622d]/30 rounded-full px-4 py-1.5 mb-6">
-      <Clock size={14} className="text-[#c4622d]" />
-      <span className="text-xs text-[#c4622d] font-medium">Limited offer — 10% off all plans</span>
+    <div className="inline-flex items-center gap-3 bg-[#0a0a0a] border border-[#1a1a1a] rounded-full px-5 py-2.5">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M12 2L2 7v10l10 5 10-5V7L12 2z"
+          fill="#2BD27F"
+          opacity="0.15"
+          stroke="#2BD27F"
+          strokeWidth="1.5"
+        />
+        <path
+          d="M9 12l2 2 4-4"
+          stroke="#2BD27F"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+      <span className="text-xs text-[#999] font-medium">
+        Official Klaviyo Partner
+      </span>
+      <div className="w-px h-4 bg-[#222]" />
+      <span className="text-xs text-[#555]">500+ stores</span>
     </div>
   );
 }
 
-function OfferPricingCard({
-  plan,
-  onClaim,
-}: {
-  plan: (typeof plans)[0];
-  onClaim: () => void;
-}) {
-  const isFeatured = plan.variant === "plus";
+function KlaviyoDashboard() {
+  const maxRevenue = Math.max(...revenueData.map((d) => d.after));
 
   return (
-    <GlassEffect
-      className="rounded-2xl h-full"
-      style={
-        isFeatured
-          ? {
-              boxShadow:
-                "0 4px 20px rgba(196, 98, 45, 0.2), 0 20px 56px rgba(0,0,0,0.5), 0 0 80px rgba(196, 98, 45, 0.06)",
-            }
-          : undefined
-      }
-    >
-      <div
-        className={`${
-          isFeatured ? "pricing-card-featured" : "pricing-card"
-        } p-5 sm:p-7 flex flex-col justify-between h-full relative bg-transparent`}
-      >
-        {isFeatured && (
-          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-40">
-            <span className="bg-[#c4622d] text-white text-[11px] font-semibold px-4 py-1 rounded-full whitespace-nowrap shadow-[0_4px_12px_rgba(196,98,45,0.3)]">
-              Most Popular
+    <div className="rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+      {/* Top bar */}
+      <div className="flex items-center justify-between px-5 py-3 border-b border-[#1a1a1a]">
+        <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
+            <div className="w-2.5 h-2.5 rounded-full bg-[#2BD27F]" />
+            <span className="text-xs font-medium text-[#999]">
+              Klaviyo Flow Analytics
             </span>
           </div>
-        )}
-
-        <div>
-          <h3 className="font-display text-base sm:text-lg font-bold text-white">
-            {plan.name}
-          </h3>
-          <p className="text-[11px] sm:text-xs text-[#6b6b6b] mt-1">
-            {plan.audience}
-          </p>
-
-          <div className="flex items-baseline gap-3 mt-3 sm:mt-4">
-            <p className="text-3xl sm:text-4xl font-bold text-white font-display">
-              ${plan.price}
-            </p>
-            <p className="text-lg text-[#555] line-through font-display">
-              ${plan.originalPrice}
-            </p>
-            <span className="text-xs bg-[#c4622d]/15 text-[#c4622d] font-semibold px-2 py-0.5 rounded-full">
-              -10%
-            </span>
-          </div>
-          <p className="text-[11px] text-[#6b6b6b] mt-1">
-            One-time payment &middot; No monthly fees
-          </p>
-
-          <div className="flex items-center gap-2 mt-4 sm:mt-5">
-            <span className="text-[10px] sm:text-[11px] bg-[#1a1a1a] border border-[#333] rounded-full px-3 py-1 text-[#999]">
-              Flows
-            </span>
-            <span className="text-xs sm:text-sm text-[#6b6b6b]">
-              {plan.flowCount} flows &middot; {plan.emailCount} emails
-            </span>
-          </div>
-
-          <ul className="mt-5 sm:mt-6 space-y-2.5 sm:space-y-3">
-            {plan.features.map((feature, i) => (
-              <li
-                key={i}
-                className="flex items-start gap-2.5 sm:gap-3 text-[13px] sm:text-sm text-[#999]"
-              >
-                <Check
-                  size={14}
-                  className="mt-0.5 shrink-0 text-[#c4622d]"
-                  strokeWidth={2.5}
-                />
-                {feature}
-              </li>
-            ))}
-          </ul>
         </div>
-
-        <div className="mt-6 sm:mt-8 space-y-2">
-          <a
-            href={plan.stripeUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={onClaim}
-            className={`block w-full py-3 sm:py-3.5 rounded-full text-sm font-medium transition-all duration-150 cursor-pointer text-center ${
-              isFeatured
-                ? "bg-[#c4622d] text-white hover:opacity-90 hover:-translate-y-px shadow-[0_4px_16px_rgba(196,98,45,0.25)]"
-                : "border border-[#333] text-white hover:bg-white/5 hover:-translate-y-px"
-            }`}
-          >
-            More Info — {plan.name}
-          </a>
-          <p className="text-[10px] text-center text-[#555]">
-            Save ${plan.originalPrice - plan.price} with this offer
-          </p>
+        <div className="flex items-center gap-2">
+          <span className="text-[10px] bg-[#2BD27F]/10 text-[#2BD27F] px-2 py-0.5 rounded-full font-medium">
+            Live
+          </span>
+          <span className="text-[10px] text-[#555]">Last 6 months</span>
         </div>
       </div>
-    </GlassEffect>
+
+      {/* Metric cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-px bg-[#1a1a1a]">
+        {[
+          {
+            label: "Email Revenue",
+            value: "$24,380",
+            change: "+284%",
+            positive: true,
+          },
+          {
+            label: "Attributed Orders",
+            value: "487",
+            change: "+196%",
+            positive: true,
+          },
+          {
+            label: "Avg. Open Rate",
+            value: "56.2%",
+            change: "+18.4%",
+            positive: true,
+          },
+          {
+            label: "Revenue per Email",
+            value: "$2.84",
+            change: "+142%",
+            positive: true,
+          },
+        ].map((metric) => (
+          <div key={metric.label} className="bg-[#0a0a0a] px-4 py-3.5">
+            <p className="text-[10px] text-[#555] uppercase tracking-wider">
+              {metric.label}
+            </p>
+            <p className="text-lg sm:text-xl font-bold text-white mt-1 font-display">
+              {metric.value}
+            </p>
+            <span className="text-[10px] text-[#2BD27F] font-medium">
+              {metric.change}
+            </span>
+          </div>
+        ))}
+      </div>
+
+      {/* Chart */}
+      <div className="px-5 py-6">
+        <div className="flex items-center justify-between mb-4">
+          <p className="text-xs text-[#777] font-medium">
+            Email Revenue vs. Previous Period
+          </p>
+          <div className="flex items-center gap-4">
+            <div className="flex items-center gap-1.5">
+              <div className="w-2 h-2 rounded-full bg-[#333]" />
+              <span className="text-[10px] text-[#555]">Before</span>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <div className="w-2 h-2 rounded-full bg-[#c4622d]" />
+              <span className="text-[10px] text-[#555]">
+                After EcomPulse
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div className="flex items-end gap-3 sm:gap-5 h-32 sm:h-40">
+          {revenueData.map((d) => (
+            <div
+              key={d.month}
+              className="flex-1 flex flex-col items-center gap-1"
+            >
+              <div className="w-full flex items-end gap-1 h-28 sm:h-36">
+                <div
+                  className="flex-1 bg-[#1a1a1a] rounded-t-sm transition-all duration-500"
+                  style={{
+                    height: `${(d.before / maxRevenue) * 100}%`,
+                  }}
+                />
+                <div
+                  className="flex-1 bg-gradient-to-t from-[#c4622d] to-[#e8814a] rounded-t-sm transition-all duration-500"
+                  style={{
+                    height: `${(d.after / maxRevenue) * 100}%`,
+                  }}
+                />
+              </div>
+              <span className="text-[10px] text-[#555]">{d.month}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function KlaviyoFlowsTable() {
+  return (
+    <div className="rounded-2xl border border-[#1a1a1a] bg-[#0a0a0a] overflow-hidden shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+      {/* Top bar */}
+      <div className="flex items-center justify-between px-5 py-3 border-b border-[#1a1a1a]">
+        <div className="flex items-center gap-2">
+          <Mail size={14} className="text-[#c4622d]" />
+          <span className="text-xs font-medium text-[#999]">
+            Active Flows — Performance Overview
+          </span>
+        </div>
+        <span className="text-[10px] text-[#555]">Updated today</span>
+      </div>
+
+      {/* Table header */}
+      <div className="grid grid-cols-5 gap-2 px-5 py-2.5 border-b border-[#1a1a1a] bg-[#080808]">
+        <span className="text-[10px] text-[#555] uppercase tracking-wider">
+          Flow
+        </span>
+        <span className="text-[10px] text-[#555] uppercase tracking-wider text-center">
+          Open Rate
+        </span>
+        <span className="text-[10px] text-[#555] uppercase tracking-wider text-center">
+          Click Rate
+        </span>
+        <span className="text-[10px] text-[#555] uppercase tracking-wider text-center">
+          Revenue
+        </span>
+        <span className="text-[10px] text-[#555] uppercase tracking-wider text-right">
+          Status
+        </span>
+      </div>
+
+      {/* Rows */}
+      {flowMetrics.map((flow) => (
+        <div
+          key={flow.name}
+          className="grid grid-cols-5 gap-2 px-5 py-3 border-b border-[#111] last:border-0 hover:bg-white/[0.02] transition-colors"
+        >
+          <span className="text-xs text-white font-medium truncate">
+            {flow.name}
+          </span>
+          <span className="text-xs text-[#999] text-center">
+            {flow.openRate}
+          </span>
+          <span className="text-xs text-[#999] text-center">
+            {flow.clickRate}
+          </span>
+          <span className="text-xs text-[#2BD27F] font-medium text-center">
+            {flow.revenue}
+          </span>
+          <div className="flex justify-end">
+            <span className="text-[10px] bg-[#2BD27F]/10 text-[#2BD27F] px-2 py-0.5 rounded-full">
+              {flow.status}
+            </span>
+          </div>
+        </div>
+      ))}
+
+      {/* Total bar */}
+      <div className="grid grid-cols-5 gap-2 px-5 py-3 bg-[#0d0d0d] border-t border-[#1a1a1a]">
+        <span className="text-xs text-[#c4622d] font-semibold">Total</span>
+        <span className="text-xs text-[#999] text-center">—</span>
+        <span className="text-xs text-[#999] text-center">—</span>
+        <span className="text-xs text-[#2BD27F] font-bold text-center">
+          $20,380
+        </span>
+        <div className="flex justify-end">
+          <span className="text-[10px] text-[#555]">5 flows</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function WhatsAppCTA({
+  variant = "primary",
+  children,
+}: {
+  variant?: "primary" | "large";
+  children?: React.ReactNode;
+}) {
+  const handleClick = () => {
+    trackEvent("Lead", { content_name: "WhatsApp CTA" });
+  };
+
+  if (variant === "large") {
+    return (
+      <a
+        href={WHATSAPP_URL}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleClick}
+        className="inline-flex items-center gap-3 bg-[#25D366] text-white rounded-full px-8 py-4 text-base font-semibold hover:bg-[#20bd5a] transition-all hover:-translate-y-0.5 shadow-[0_4px_20px_rgba(37,211,102,0.3)] cursor-pointer"
+      >
+        <MessageCircle size={20} />
+        {children || "Get My Flows Set Up"}
+      </a>
+    );
+  }
+
+  return (
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={handleClick}
+      className="inline-flex items-center gap-2 bg-[#25D366] text-white rounded-full px-6 py-3 text-sm font-medium hover:bg-[#20bd5a] transition-all hover:-translate-y-0.5 shadow-[0_4px_16px_rgba(37,211,102,0.25)] cursor-pointer"
+    >
+      <MessageCircle size={16} />
+      {children || "Get My Flows Set Up"}
+    </a>
+  );
+}
+
+function ProcessStep({
+  number,
+  title,
+  description,
+  icon,
+}: {
+  number: string;
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+}) {
+  return (
+    <div className="flex gap-5">
+      <div className="flex flex-col items-center">
+        <div className="w-10 h-10 rounded-full bg-[#c4622d]/15 border border-[#c4622d]/30 flex items-center justify-center shrink-0">
+          <span className="text-sm font-bold text-[#c4622d]">{number}</span>
+        </div>
+        <div className="w-px flex-1 bg-[#1a1a1a] mt-2" />
+      </div>
+      <div className="pb-10">
+        <div className="flex items-center gap-2 mb-1.5">
+          {icon}
+          <h3 className="text-base font-semibold text-white">{title}</h3>
+        </div>
+        <p className="text-sm text-[#777] leading-relaxed">{description}</p>
+      </div>
+    </div>
   );
 }
 
@@ -259,45 +437,17 @@ function OfferFAQ() {
 
 /* ─── Main Page ─── */
 export default function OfferPage() {
-  const pricingRef = useRef<HTMLDivElement>(null);
   const hasTrackedViewContent = useRef(false);
 
   useEffect(() => {
-    // Track ViewContent when pricing section scrolls into view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasTrackedViewContent.current) {
-            hasTrackedViewContent.current = true;
-            trackEvent("ViewContent", {
-              content_name: "Offer Page Pricing",
-              content_category: "Landing Page",
-              value: 585,
-              currency: "USD",
-            });
-          }
-        });
-      },
-      { threshold: 0.3 }
-    );
-
-    if (pricingRef.current) observer.observe(pricingRef.current);
-    return () => observer.disconnect();
+    if (!hasTrackedViewContent.current) {
+      hasTrackedViewContent.current = true;
+      trackEvent("ViewContent", {
+        content_name: "Offer Funnel Page",
+        content_category: "Landing Page",
+      });
+    }
   }, []);
-
-  const handleClaim = (plan: (typeof plans)[0]) => {
-    trackEvent("InitiateCheckout", {
-      content_name: plan.name,
-      value: plan.price,
-      currency: "USD",
-      num_items: 1,
-    });
-  };
-
-  const scrollToPricing = () => {
-    pricingRef.current?.scrollIntoView({ behavior: "smooth" });
-    trackEvent("Lead", { content_name: "Offer CTA Click" });
-  };
 
   return (
     <>
@@ -316,18 +466,15 @@ export default function OfferPage() {
                 className="h-6 w-auto"
               />
             </Link>
-            <button
-              onClick={scrollToPricing}
-              className="inline-flex items-center gap-2 text-sm font-medium bg-[#c4622d] text-white rounded-full px-5 py-2 hover:opacity-90 transition-all shadow-[0_4px_16px_rgba(196,98,45,0.25)] cursor-pointer"
-            >
-              Claim 10% Off
-            </button>
+            <WhatsAppCTA>Chat With Us</WhatsAppCTA>
           </div>
         </header>
 
         <main>
-          {/* ─── Hero ─── */}
-          <section className="relative pt-20 sm:pt-28 md:pt-36 lg:pt-44 pb-12 sm:pb-16 md:pb-20 overflow-hidden">
+          {/* ═══════════════════════════════════════════════
+              SECTION 1: Hero — Hook + Klaviyo Partner Badge
+              ═══════════════════════════════════════════════ */}
+          <section className="relative pt-24 sm:pt-32 md:pt-40 lg:pt-48 pb-16 sm:pb-20 overflow-hidden">
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
@@ -337,10 +484,10 @@ export default function OfferPage() {
             />
 
             <div className="relative z-10 max-w-3xl mx-auto text-center px-5 sm:px-6">
-              <OfferBadge />
+              <KlaviyoPartnerBadge />
 
               <h1
-                className="font-display text-[26px] sm:text-4xl md:text-5xl lg:text-[56px] font-bold leading-[1.1] tracking-tight"
+                className="mt-8 font-display text-[28px] sm:text-4xl md:text-5xl lg:text-[56px] font-bold leading-[1.1] tracking-tight"
                 style={{
                   background:
                     "linear-gradient(to bottom, #ffffff, #ffffff, rgba(255, 255, 255, 0.6))",
@@ -349,7 +496,7 @@ export default function OfferPage() {
                   backgroundClip: "text",
                 }}
               >
-                Add 20-25% more revenue{" "}
+                Your Klaviyo is leaving{" "}
                 <span
                   className="font-accent"
                   style={{
@@ -360,104 +507,114 @@ export default function OfferPage() {
                     backgroundClip: "text",
                   }}
                 >
-                  without spending more on ads
+                  thousands on the table
                 </span>
               </h1>
 
               <p className="mt-6 text-[15px] sm:text-[17px] text-[#777] max-w-2xl mx-auto leading-relaxed">
-                Done-for-you Klaviyo email flows that turn your existing traffic
-                into repeat buyers. One-time setup, live in 5-7 days, no
-                retainers. Today only: <strong className="text-white">10% off every plan.</strong>
+                We build done-for-you Klaviyo email flows that add 20-25% more
+                revenue to your store — without spending another dollar on ads.
+                One-time setup. Live in 5-7 days.
               </p>
 
-              <div className="mt-6 sm:mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 px-4 sm:px-0">
-                <button
-                  onClick={scrollToPricing}
-                  className="btn-primary w-full sm:w-auto justify-center cursor-pointer"
-                >
-                  Claim Your Discount
-                  <ArrowRight size={14} />
-                </button>
-                <span className="text-[13px] sm:text-sm text-[#555]">
-                  No monthly fees. Ever.
+              <div className="mt-8 sm:mt-10 flex flex-col items-center gap-4">
+                <WhatsAppCTA variant="large">
+                  Get My Flows Set Up
+                </WhatsAppCTA>
+                <span className="text-[13px] text-[#555]">
+                  Free consultation — no commitment
                 </span>
-              </div>
-            </div>
-
-            {/* Dashboard image */}
-            <div className="mt-14 sm:mt-18 max-w-5xl mx-auto px-5 sm:px-8 lg:px-12">
-              <div className="dashboard-image-wrapper">
-                <Image
-                  src="/dashboard-new.jpg"
-                  alt="EcomPulse Dashboard"
-                  width={1200}
-                  height={750}
-                  className="w-full h-auto"
-                  priority
-                />
               </div>
             </div>
           </section>
 
-          {/* ─── Social proof strip ─── */}
-          <section className="py-12 sm:py-16 stats-section">
-            <div className="max-w-4xl mx-auto px-5 sm:px-6 lg:px-8">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-6">
-                {socialProof.map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <div className="stat-number font-display text-3xl sm:text-4xl">
-                      {stat.metric}
-                    </div>
-                    <p className="mt-2 text-[13px] text-[#555]">{stat.label}</p>
+          {/* ─── Trusted by strip ─── */}
+          <section className="py-8 sm:py-10 border-y border-white/[0.04] bg-[#080808]">
+            <div className="max-w-4xl mx-auto px-5">
+              <p className="text-center text-[11px] uppercase tracking-[0.15em] text-[#444] mb-6">
+                Trusted by 500+ ecommerce brands using Klaviyo
+              </p>
+              <div className="flex items-center justify-center gap-6 sm:gap-10 flex-wrap">
+                {[
+                  "Klaviyo Partner",
+                  "Shopify",
+                  "Klaviyo Gold",
+                  "500+ Stores",
+                  "E-commerce",
+                ].map((name) => (
+                  <div
+                    key={name}
+                    className="flex items-center gap-2 opacity-30"
+                  >
+                    <div className="w-6 h-6 rounded bg-white/10" />
+                    <span className="text-xs text-[#666] font-medium">
+                      {name}
+                    </span>
                   </div>
                 ))}
               </div>
             </div>
           </section>
 
-          {/* ─── Why email beats more ad spend ─── */}
-          <section className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-            <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-14">
+          {/* ═══════════════════════════════════════════════
+              SECTION 2: The Problem — Pain Points
+              ═══════════════════════════════════════════════ */}
+          <section className="py-16 sm:py-24 px-5 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <div className="text-center max-w-2xl mx-auto mb-12">
               <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
-                You&apos;re already paying for the traffic.{" "}
-                <span className="text-[#c4622d]">Stop wasting it.</span>
+                You&apos;re spending on ads but{" "}
+                <span className="text-[#c4622d]">leaving money behind</span>
               </h2>
               <p className="mt-4 text-[15px] text-[#777] leading-relaxed">
-                Every visitor who leaves without buying is money you already
-                spent. Our email flows bring them back — automatically.
+                Most Shopify stores only capture 5-10% of their traffic as
+                revenue. The rest? Gone forever — unless you have the right
+                email flows.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
                 {
-                  icon: <Zap size={24} className="text-[#c4622d]" />,
-                  title: "Recover Abandoned Carts",
+                  icon: <ShoppingCart size={20} className="text-red-400" />,
+                  stat: "70%",
+                  title: "of carts are abandoned",
                   description:
-                    "70% of carts are abandoned. Our flows bring back buyers who were already ready to purchase.",
+                    "Without an abandoned cart flow, those sales are lost forever.",
                 },
                 {
-                  icon: <ArrowRight size={24} className="text-[#c4622d]" />,
-                  title: "Increase Customer LTV",
+                  icon: <Eye size={20} className="text-red-400" />,
+                  stat: "97%",
+                  title: "of visitors leave without buying",
                   description:
-                    "Post-purchase and win-back flows turn one-time buyers into repeat customers without extra ad spend.",
+                    "Browse abandonment flows bring them back when they're ready.",
                 },
                 {
-                  icon: <Shield size={24} className="text-[#c4622d]" />,
-                  title: "Zero Risk, One-Time Fee",
+                  icon: <RefreshCw size={20} className="text-red-400" />,
+                  stat: "65%",
+                  title: "of revenue comes from repeat customers",
                   description:
-                    "No retainers, no monthly costs. Pay once, keep the flows forever. Results-backed guarantee.",
+                    "Post-purchase flows turn one-time buyers into loyal fans.",
+                },
+                {
+                  icon: <DollarSign size={20} className="text-red-400" />,
+                  stat: "$0",
+                  title: "from email = money left on the table",
+                  description:
+                    "If email isn't 20-30% of your revenue, you're underperforming.",
                 },
               ].map((item) => (
-                <GlassEffect key={item.title} className="rounded-2xl h-full">
-                  <div className="p-6 sm:p-8">
-                    <div className="w-12 h-12 rounded-xl bg-[#c4622d]/10 border border-[#c4622d]/20 flex items-center justify-center mb-4">
+                <GlassEffect key={item.title} className="rounded-2xl">
+                  <div className="p-6">
+                    <div className="flex items-center gap-3 mb-3">
                       {item.icon}
+                      <span className="text-2xl font-bold text-white font-display">
+                        {item.stat}
+                      </span>
                     </div>
-                    <h3 className="font-display text-base sm:text-lg font-semibold text-white mb-2">
+                    <h3 className="text-sm font-semibold text-white mb-1">
                       {item.title}
                     </h3>
-                    <p className="text-[13px] sm:text-sm text-[#6b6b6b] leading-relaxed">
+                    <p className="text-[13px] text-[#666] leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -466,72 +623,167 @@ export default function OfferPage() {
             </div>
           </section>
 
-          {/* ─── Pricing ─── */}
-          <section
-            ref={pricingRef}
-            id="pricing"
-            className="py-16 sm:py-20 lg:py-24 px-5 sm:px-6 lg:px-8 max-w-6xl mx-auto"
-          >
-            <div className="text-center max-w-2xl mx-auto mb-10 sm:mb-14">
-              <OfferBadge />
-              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold">
-                Claim Your 10% Discount
+          {/* ═══════════════════════════════════════════════
+              SECTION 3: The Solution — What We Build
+              ═══════════════════════════════════════════════ */}
+          <section className="py-16 sm:py-24 px-5 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <div className="inline-flex items-center gap-2 bg-[#c4622d]/10 border border-[#c4622d]/30 rounded-full px-4 py-1.5 mb-6">
+                <Mail size={14} className="text-[#c4622d]" />
+                <span className="text-xs text-[#c4622d] font-medium">
+                  Done-for-you Klaviyo flows
+                </span>
+              </div>
+              <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
+                We build the flows.{" "}
+                <span className="text-[#c4622d]">You collect the revenue.</span>
               </h2>
-              <p className="mt-3 sm:mt-4 text-[#6b6b6b] text-[15px] sm:text-base">
-                One-time payment. No monthly fees. No retainers. Flows live in
-                5-7 days.
+              <p className="mt-4 text-[15px] text-[#777] leading-relaxed">
+                As an official Klaviyo partner, we&apos;ve built high-converting
+                email flows for 500+ ecommerce stores. Here&apos;s what your
+                dashboard could look like:
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
-              {plans.map((plan) => (
-                <OfferPricingCard
-                  key={plan.name}
-                  plan={plan}
-                  onClaim={() => handleClaim(plan)}
-                />
-              ))}
+            {/* Fake Klaviyo Dashboard */}
+            <KlaviyoDashboard />
+
+            <div className="mt-8 text-center">
+              <p className="text-sm text-[#555] mb-6">
+                Real results from a store 60 days after EcomPulse setup
+              </p>
+              <WhatsAppCTA>I Want These Results</WhatsAppCTA>
+            </div>
+          </section>
+
+          {/* ═══════════════════════════════════════════════
+              SECTION 4: Flow Performance Table
+              ═══════════════════════════════════════════════ */}
+          <section className="py-16 sm:py-24 px-5 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+            <div className="text-center max-w-2xl mx-auto mb-12">
+              <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold">
+                5 flows that generate{" "}
+                <span className="text-[#2BD27F]">$20K+/month</span>
+              </h2>
+              <p className="mt-3 text-[15px] text-[#777]">
+                Each flow runs on autopilot in your Klaviyo account — 24/7,
+                while you sleep.
+              </p>
             </div>
 
-            <div className="mt-8 sm:mt-10 text-center bg-white/[0.02] border border-white/[0.05] rounded-xl px-5 py-4 max-w-lg mx-auto">
-              <p className="text-sm text-[#999]">
-                <span className="text-[#c4622d] font-medium">
-                  Results-backed guarantee.
-                </span>{" "}
-                Not happy? We&apos;ll revise until you are.
+            <KlaviyoFlowsTable />
+
+            <div className="mt-6 text-center">
+              <p className="text-xs text-[#555]">
+                Based on avg. client performance after 90 days
               </p>
             </div>
           </section>
 
-          {/* ─── Testimonial highlight ─── */}
-          <section className="py-16 sm:py-20 px-5 sm:px-6 lg:px-8 max-w-4xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+          {/* ═══════════════════════════════════════════════
+              SECTION 5: How It Works
+              ═══════════════════════════════════════════════ */}
+          <section className="py-16 sm:py-24 px-5 sm:px-6 lg:px-8 max-w-3xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold">
+                Live in 5-7 days. Here&apos;s how.
+              </h2>
+            </div>
+
+            <div>
+              <ProcessStep
+                number="1"
+                title="Message Us on WhatsApp"
+                description="Tell us about your store and current email setup. We'll give you a free audit and recommendation within 24 hours."
+                icon={
+                  <MessageCircle size={16} className="text-[#25D366]" />
+                }
+              />
+              <ProcessStep
+                number="2"
+                title="We Build Your Flows"
+                description="Our Klaviyo-certified team builds your custom flows — copywriting, design, segmentation, triggers — all optimized for your niche."
+                icon={<Mail size={16} className="text-[#c4622d]" />}
+              />
+              <ProcessStep
+                number="3"
+                title="Review & Go Live"
+                description="You approve the flows, we push them live in your Klaviyo account, and revenue starts rolling in automatically."
+                icon={<TrendingUp size={16} className="text-[#2BD27F]" />}
+              />
+              <div className="flex gap-5">
+                <div className="flex flex-col items-center">
+                  <div className="w-10 h-10 rounded-full bg-[#2BD27F]/15 border border-[#2BD27F]/30 flex items-center justify-center shrink-0">
+                    <Check size={16} className="text-[#2BD27F]" />
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-base font-semibold text-[#2BD27F]">
+                    Collect Revenue on Autopilot
+                  </h3>
+                  <p className="text-sm text-[#777] leading-relaxed mt-1">
+                    Your flows run 24/7 — recovering carts, welcoming new
+                    subscribers, and turning one-time buyers into repeat
+                    customers.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-10 text-center">
+              <WhatsAppCTA variant="large">
+                Start With a Free Audit
+              </WhatsAppCTA>
+            </div>
+          </section>
+
+          {/* ═══════════════════════════════════════════════
+              SECTION 6: Social Proof — Testimonials
+              ═══════════════════════════════════════════════ */}
+          <section className="py-16 sm:py-24 px-5 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold">
+                Store owners love the results
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {[
                 {
                   quote:
                     "We saw a 28% revenue increase from email alone in the first month. EcomPulse paid for itself in the first week.",
                   name: "Sarah K.",
                   role: "DTC Brand Owner",
-                  image:
-                    "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=150&h=150",
+                  metric: "+28% revenue",
                 },
                 {
                   quote:
                     "Our email revenue went from 8% to 32% of total revenue within 60 days. Best ROI of any marketing investment we've made.",
                   name: "Natalie W.",
                   role: "DTC Growth Lead",
-                  image:
-                    "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=150&h=150",
+                  metric: "8% → 32% email rev",
+                },
+                {
+                  quote:
+                    "The abandoned cart flow alone recovered $12K in the first month. I can't believe we weren't doing this before.",
+                  name: "Marcus D.",
+                  role: "Shopify Store Owner",
+                  metric: "$12K recovered",
                 },
               ].map((t) => (
                 <GlassEffect key={t.name} className="rounded-2xl">
-                  <div className="p-6 sm:p-8">
-                    <div className="flex gap-1 mb-4">
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="text-xs bg-[#c4622d]/15 text-[#c4622d] px-2.5 py-1 rounded-full font-semibold">
+                        {t.metric}
+                      </span>
+                    </div>
+                    <div className="flex gap-0.5 mb-3">
                       {[...Array(5)].map((_, i) => (
                         <svg
                           key={i}
-                          width="16"
-                          height="16"
+                          width="14"
+                          height="14"
                           viewBox="0 0 24 24"
                           fill="#c4622d"
                         >
@@ -539,23 +791,14 @@ export default function OfferPage() {
                         </svg>
                       ))}
                     </div>
-                    <p className="text-sm text-[#999] leading-relaxed mb-5">
+                    <p className="text-[13px] text-[#999] leading-relaxed mb-4">
                       &ldquo;{t.quote}&rdquo;
                     </p>
-                    <div className="flex items-center gap-3">
-                      <img
-                        src={t.image}
-                        alt={t.name}
-                        width={40}
-                        height={40}
-                        className="rounded-full object-cover ring-2 ring-white/[0.08]"
-                      />
-                      <div>
-                        <p className="text-sm font-semibold text-white">
-                          {t.name}
-                        </p>
-                        <p className="text-xs text-[#666]">{t.role}</p>
-                      </div>
+                    <div>
+                      <p className="text-sm font-semibold text-white">
+                        {t.name}
+                      </p>
+                      <p className="text-xs text-[#666]">{t.role}</p>
                     </div>
                   </div>
                 </GlassEffect>
@@ -563,43 +806,107 @@ export default function OfferPage() {
             </div>
           </section>
 
-          {/* ─── FAQ ─── */}
+          {/* ═══════════════════════════════════════════════
+              SECTION 7: Comparison
+              ═══════════════════════════════════════════════ */}
+          <section className="py-16 sm:py-24 px-5 sm:px-6 lg:px-8 max-w-3xl mx-auto">
+            <div className="text-center mb-10">
+              <h2 className="font-display text-xl sm:text-2xl md:text-3xl font-bold">
+                Why EcomPulse vs. the rest
+              </h2>
+            </div>
+
+            <div className="comparison-table">
+              <div className="grid grid-cols-4 gap-2 px-5 py-3 border-b border-[#1a1a1a]">
+                <span className="text-xs text-[#555]" />
+                <span className="text-xs text-[#c4622d] font-semibold text-center">
+                  EcomPulse
+                </span>
+                <span className="text-xs text-[#555] text-center">
+                  Agencies
+                </span>
+                <span className="text-xs text-[#555] text-center">
+                  DIY
+                </span>
+              </div>
+              {[
+                ["Cost", "One-time", "$2-5K/mo", "Free"],
+                ["Setup time", "5-7 days", "2-4 weeks", "Weeks+"],
+                ["Klaviyo expertise", "Partner", "Varies", "Learning"],
+                ["Ongoing fees", "$0", "$2-5K/mo", "$0"],
+                ["Proven templates", "500+ stores", "Limited", "None"],
+                ["Results guarantee", "Yes", "Rare", "No"],
+              ].map(([feature, us, agency, diy]) => (
+                <div
+                  key={feature}
+                  className="grid grid-cols-4 gap-2 px-5 py-3 border-b border-[#111] last:border-0"
+                >
+                  <span className="text-xs text-[#999]">{feature}</span>
+                  <span className="text-xs text-white font-medium text-center">
+                    {us}
+                  </span>
+                  <span className="text-xs text-[#555] text-center">
+                    {agency}
+                  </span>
+                  <span className="text-xs text-[#555] text-center">
+                    {diy}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* ═══════════════════════════════════════════════
+              SECTION 8: FAQ
+              ═══════════════════════════════════════════════ */}
           <section className="py-16 sm:py-20 px-5 sm:px-6 lg:px-8 max-w-3xl mx-auto">
             <h2 className="font-display text-2xl sm:text-3xl font-bold text-center">
               Got Questions?
             </h2>
             <p className="mt-3 text-center text-[#6b6b6b] text-[15px]">
-              Everything you need to know before claiming your discount.
+              Or just message us on WhatsApp — we reply fast.
             </p>
             <div className="mt-8 sm:mt-10">
               <OfferFAQ />
             </div>
           </section>
 
-          {/* ─── Final CTA ─── */}
-          <section className="py-16 sm:py-20 px-5 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+          {/* ═══════════════════════════════════════════════
+              SECTION 9: Final CTA
+              ═══════════════════════════════════════════════ */}
+          <section className="py-16 sm:py-24 px-5 sm:px-6 lg:px-8 max-w-5xl mx-auto">
             <GlassEffect className="rounded-3xl">
               <div className="px-8 sm:px-16 py-14 sm:py-20 text-center relative overflow-hidden">
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-[radial-gradient(ellipse_at_center,rgba(196,98,45,0.1)_0%,transparent_70%)] pointer-events-none" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[400px] h-[200px] bg-[radial-gradient(ellipse_at_center,rgba(37,211,102,0.08)_0%,transparent_70%)] pointer-events-none" />
                 <div className="relative z-10">
-                  <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold">
-                    Stop paying for traffic you can&apos;t convert
+                  <KlaviyoPartnerBadge />
+                  <h2 className="mt-6 font-display text-2xl sm:text-3xl lg:text-4xl font-bold">
+                    Ready to turn your Klaviyo into a{" "}
+                    <span className="text-[#c4622d]">revenue machine</span>?
                   </h2>
-                  <p className="mt-3 text-[#777] text-[15px] sm:text-base max-w-lg mx-auto">
-                    Add 20-25% more revenue from your existing visitors. One-time
-                    setup, 10% off today.
+                  <p className="mt-4 text-[#777] text-[15px] sm:text-base max-w-lg mx-auto">
+                    Message us on WhatsApp for a free audit of your current
+                    email setup. We&apos;ll show you exactly how much revenue
+                    you&apos;re leaving on the table.
                   </p>
-                  <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button
-                      onClick={scrollToPricing}
-                      className="btn-primary w-full sm:w-auto justify-center cursor-pointer"
-                    >
-                      Claim Your 10% Discount
-                      <ArrowRight size={14} />
-                    </button>
-                    <span className="text-sm text-[#555]">
-                      No risk. Results-backed guarantee.
-                    </span>
+                  <div className="mt-8 flex flex-col items-center gap-4">
+                    <WhatsAppCTA variant="large">
+                      Get My Flows Set Up
+                    </WhatsAppCTA>
+                    <div className="flex items-center gap-6 text-[13px] text-[#555]">
+                      <span className="flex items-center gap-1.5">
+                        <Check size={12} className="text-[#2BD27F]" />
+                        Free audit
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <Check size={12} className="text-[#2BD27F]" />
+                        No commitment
+                      </span>
+                      <span className="flex items-center gap-1.5">
+                        <Check size={12} className="text-[#2BD27F]" />
+                        Reply in minutes
+                      </span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -618,9 +925,15 @@ export default function OfferPage() {
                   className="h-5 w-auto opacity-50"
                 />
               </Link>
-              <p className="text-xs text-[#555]">
-                &copy; {new Date().getFullYear()} EcomPulse. All rights reserved.
-              </p>
+              <div className="flex items-center gap-4">
+                <span className="text-xs text-[#555]">
+                  Official Klaviyo Partner
+                </span>
+                <p className="text-xs text-[#555]">
+                  &copy; {new Date().getFullYear()} EcomPulse. All rights
+                  reserved.
+                </p>
+              </div>
             </div>
           </footer>
         </main>
